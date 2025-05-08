@@ -1,11 +1,15 @@
 import HomePage from '../pages/home/home-page';
 import AboutPage from '../pages/about/about-page';
-import CekMinat from '../pages/cek-minat/cek-minat-page';
+import FeaturesPage from '../pages/features/features';
+import LoginPage from '../pages/auth/login/login-page';
+import RegisterPage from '../pages/auth/register/register-page';
 
 const routes = {
   '/': new HomePage(),
-  '/minat': new CekMinat(),
+  '/features': new FeaturesPage(),
   '/about': new AboutPage(),
+  '/login': new LoginPage(),
+  '/register': new RegisterPage(),
 
 };
 
