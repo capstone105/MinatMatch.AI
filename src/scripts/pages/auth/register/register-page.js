@@ -1,0 +1,58 @@
+export default class RegisterPage {
+  async render() {
+    return `
+      <section class="container mx-auto px-4">
+        <div class="p-5 flex flex-col items-center justify-center min-h-screen gap-6">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center">
+            Create Account
+          </h1>
+          <form id="register-form" class="mt-6 w-full max-w-md sm:w-96">
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                Username
+              </label>
+              <input
+                type="text"
+                id="username"
+                placeholder="Username"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div class="mb-6">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <button
+              type="submit"
+              id="register-button"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            >
+              Register
+            </button>
+          </form>
+          <p class="p-3 text-base sm:text-lg md:text-xl mb-8 text-center">
+            Already have an account? <a href="#/login" class="text-blue-500">Login</a>
+          </p>
+        </div>
+      </section>
+    `;
+  }
+}
