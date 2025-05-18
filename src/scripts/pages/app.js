@@ -1,5 +1,7 @@
 import routes from "../routes/routes";
 import { getActiveRoute } from "../routes/url-parser";
+import { getAccesToken, removeAccesToken } from "../data/login";
+import { generateLoggedInTemplate, generateLoggedOutTemplate } from "../template/template";
 
 class App {
   #content = null;
@@ -20,10 +22,7 @@ class App {
     });
 
     document.addEventListener("click", (event) => {
-      if (
-        !this.#navigationDrawer.contains(event.target) &&
-        !this.#drawerButton.contains(event.target)
-      ) {
+      if (!this.#navigationDrawer.contains(event.target) && !this.#drawerButton.contains(event.target)) {
         this.#navigationDrawer.classList.add("-translate-x-full");
       }
       this.#navigationDrawer.querySelectorAll("a").forEach((link) => {
@@ -34,11 +33,33 @@ class App {
     });
   }
 
+  #setupNavigation() {
+    const token = getAccesToken();
+
+    if (token) {
+      this.#navigationDrawer.innerHTML = generateLoggedInTemplate();
+      const logoutButton = this.#navigationDrawer.querySelector("#logout-button");
+      logoutButton.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        if (confirm("Apakah Anda yakin ingin keluar?")) {
+          removeAccesToken();
+
+          location.hash = "/login";
+        }
+      });
+    } else {
+      this.#navigationDrawer.innerHTML = generateLoggedOutTemplate();
+    }
+  }
+
   async renderPage() {
     const url = getActiveRoute();
     const page = routes[url];
 
     this.#content.innerHTML = await page.render();
+    await page.afterRender();
+    this.#setupNavigation();
   }
 }
 

@@ -1,3 +1,6 @@
+import LoginModel from "./../../../data/login.js";
+import LoginPresenter from "./login-presenter.js";
+
 export default class LoginPage {
   async render() {
     return `
@@ -6,7 +9,7 @@ export default class LoginPage {
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center">
             Welcome Back
           </h1>
-          <form id="login-form" class="m-6 w-full max-w-md sm:w-96">
+          <form id="login-form" class="mt-6 w-full max-w-md sm:w-96">
             <div class="mb-4">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                 Email
@@ -37,11 +40,49 @@ export default class LoginPage {
               Login
             </button>
           </form>
+          <button
+            type="button"
+            id="demo-button"
+            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-2"
+          >
+            Gunakan Akun Demo
+          </button>
           <p class="p-3 text-base sm:text-lg md:text-xl mb-8 text-center">
             Don't have an account? <a href="#/register" class="text-blue-500">Register</a>
           </p>
         </div>
       </section>
     `;
+  }
+
+  async afterRender() {
+    const form = document.querySelector("#login-form");
+    const email = document.querySelector("#email");
+    const password = document.querySelector("#password");
+    const demoButton = document.querySelector("#demo-button");
+
+    this.presenter = new LoginPresenter({
+      view: this,
+      model: new LoginModel(),
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      await this.presenter.getLogin({ email: email.value, password: password.value });
+    });
+
+    demoButton.addEventListener("click", async (event) => {
+      event.preventDefault();
+      await this.presenter.getLogin({ email: "admin@gmail.com", password: "1234" });
+    })
+  }
+
+  loggedInSuccessfully(message) {
+    alert(message);
+    location.hash = "/";
+  }
+
+  showError(message) {
+    alert(message);
   }
 }

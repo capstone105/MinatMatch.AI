@@ -55,4 +55,6 @@ export default class RegisterPage {
       </section>
     `;
   }
+
+  async afterRender() {}
 }

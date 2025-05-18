@@ -11,4 +11,7 @@ export default class AboutPage {
       </section>
     `;
   }
+
+  async afterRender() {
+  }
 }
