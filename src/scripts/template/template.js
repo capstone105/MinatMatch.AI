@@ -1,9 +1,8 @@
 export function generateLoggedInTemplate() {
   return `
     <ul id="nav-list" class="flex flex-col gap-4 lg:flex-row items-center">
-      <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/">Home</a></li>
-      <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/about">About Us</a></li>
-      <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/features">Features</a></li>
+      <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/add">Add Data</a></li>
+      <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/career">Your Career Path</a></li>
       <li><a id="logout-button" class="inline-block w-36 py-1 rounded-full text-white text-center shadow-[0_4px_20px_rgba(93,52,241,0.5)] bg-gradient-to-r from-[#686DE0] to-[#4834D4] hover:opacity-90 transition">Logout</a></li>
     </ul>
 `;

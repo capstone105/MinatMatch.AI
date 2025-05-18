@@ -79,7 +79,7 @@ export default class LoginPage {
 
   loggedInSuccessfully(message) {
     alert(message);
-    location.hash = "/";
+    location.hash = "/add";
   }
 
   showError(message) {
