@@ -2,6 +2,7 @@ import routes from "../routes/routes";
 import { getActiveRoute } from "../routes/url-parser";
 import { getAccesToken, removeAccesToken } from "../data/login";
 import { generateLoggedInTemplate, generateLoggedOutTemplate } from "../template/template";
+import { transitionHelper } from "../utils";
 
 class App {
   #content = null;
@@ -57,9 +58,18 @@ class App {
     const url = getActiveRoute();
     const page = routes[url];
 
-    this.#content.innerHTML = await page.render();
-    await page.afterRender();
-    this.#setupNavigation();
+   const transition = transitionHelper({
+      updateDOM: async () => {
+        this.#content.innerHTML = await page.render();
+        page.afterRender();
+      },
+    });
+
+    transition.ready.catch(console.error);
+    transition.updateCallbackDone.then(() => {
+      scrollTo({ top: 0, behavior: "instant" });
+      this.#setupNavigation();
+    });
   }
 }
 
