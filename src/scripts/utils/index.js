@@ -40,3 +40,10 @@ export function transitionHelper({ skipTransition = false, updateDOM }) {
   }
   return document.startViewTransition(updateDOM);
 }
+
+export function activeLink() {
+  const link = document.querySelector("[href='" + location.hash + "']");
+  if (link) {
+    link.classList.add("text-primary");
+  }
+}

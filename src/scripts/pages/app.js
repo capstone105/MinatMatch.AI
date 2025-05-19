@@ -2,7 +2,7 @@ import routes from "../routes/routes";
 import { getActiveRoute } from "../routes/url-parser";
 import { getAccesToken, removeAccesToken } from "../data/login";
 import { generateLoggedInTemplate, generateLoggedOutTemplate } from "../template/template";
-import { transitionHelper } from "../utils";
+import { transitionHelper, activeLink } from "../utils";
 
 class App {
   #content = null;
@@ -69,6 +69,7 @@ class App {
     transition.updateCallbackDone.then(() => {
       scrollTo({ top: 0, behavior: "instant" });
       this.#setupNavigation();
+      activeLink();
     });
   }
 }
