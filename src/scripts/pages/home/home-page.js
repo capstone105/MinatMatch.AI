@@ -4,7 +4,7 @@ export default class HomePage {
        <section class="container mx-auto px-4">
         <div class="p-5 flex flex-col items-center justify-center min-h-screen">
           <h1
-            class="max-w-xl text-3xl sm:text-3xl md:text-6xl font-extrabold mb-4 text-center text-shadow-heavy"
+            class="max-w-xl text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-center text-shadow-heavy"
           >
             One Step Closer to Your Dream Job
           </h1>
