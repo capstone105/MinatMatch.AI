@@ -45,5 +45,7 @@ export function activeLink() {
   const link = document.querySelector("[href='" + location.hash + "']");
   if (link) {
     link.classList.add("text-primary");
+    link.classList.add("transform");
+    link.classList.add("scale-105");
   }
 }
