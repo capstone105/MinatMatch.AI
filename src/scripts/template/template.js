@@ -1,7 +1,7 @@
 export function generateLoggedInTemplate() {
   return `
     <div class="flex flex-col gap-4 lg:flex-row lg:gap-14 items-center">
-      <ul id="nav-list" class="flex flex-col gap-4 lg:flex-row items-center">
+      <ul id="nav-list" class="flex flex-col gap-1 lg:flex-row items-center">
         <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/add">Add Data</a></li>
         <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/career">Your Career Path</a></li>
       </ul>
@@ -15,7 +15,7 @@ export function generateLoggedInTemplate() {
 export function generateLoggedOutTemplate() {
   return `
    <div class="flex flex-col gap-4 lg:flex-row lg:gap-14 items-center">
-      <ul id="nav-list" class="flex flex-col gap-4 lg:flex-row items-center">
+      <ul id="nav-list" class="flex flex-col gap-1 lg:flex-row items-center">
         <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/">Home</a></li>
         <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/about">About Us</a></li>
         <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/features">Features</a></li>
