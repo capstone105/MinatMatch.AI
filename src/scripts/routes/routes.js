@@ -5,6 +5,7 @@ import LoginPage from '../pages/auth/login/login-page';
 import RegisterPage from '../pages/auth/register/register-page';
 import AddPage from '../pages/add/add-page';
 import CareerPage from '../pages/career/career-page';
+import NotFoundPage from '../pages/not-found/not-found-page';
 
 const routes = {
   '/': new HomePage(),
@@ -14,6 +15,7 @@ const routes = {
   '/register': new RegisterPage(),
   '/add': new AddPage(),
   '/career': new CareerPage(),
+  '*': new NotFoundPage(),
 };
 
 export default routes;

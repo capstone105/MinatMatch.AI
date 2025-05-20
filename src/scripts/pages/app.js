@@ -56,7 +56,7 @@ class App {
 
   async renderPage() {
     const url = getActiveRoute();
-    const page = routes[url];
+    const page = routes[url] || routes["*"];
 
    const transition = transitionHelper({
       updateDOM: async () => {
