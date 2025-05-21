@@ -34,7 +34,7 @@ export default class LoginPage {
             </div>
             <button
               type="submit"
-              id="login-button"
+              id="login-button-form"
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             >
               Login
@@ -84,5 +84,23 @@ export default class LoginPage {
 
   showError(message) {
     alert(message);
+  }
+
+  showLoading() {
+    const button = document.querySelector("#login-button-form");
+    button.innerHTML = `
+      <div class="loader flex items-center justify-center">
+        <span class="inline-block w-5 h-5 loader border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+        <span class="ml-2 text-white">Loading...</span>
+      </div>`;
+    button.setAttribute("disabled", true);
+    button.classList.add("cursor-wait");
+  }
+
+  hideLoading() {
+    const button = document.querySelector("#login-button-form");
+    button.innerHTML = "Login";
+    button.removeAttribute("disabled");
+    button.classList.remove("cursor-wait");
   }
 }

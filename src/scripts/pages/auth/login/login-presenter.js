@@ -5,6 +5,7 @@ export default class LoginPresenter {
   }
 
   async getLogin({ email, password }) {
+    this.view.showLoading();
     const user = this.model.validateUser(email, password);
     if (user) {
       this.view.loggedInSuccessfully("Login berhasil!");
@@ -12,5 +13,6 @@ export default class LoginPresenter {
     } else {
       this.view.showError("Email atau password salah!");
     }
+    this.view.hideLoading();
   }
 }

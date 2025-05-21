@@ -42,7 +42,7 @@ export default class RegisterPage {
             </div>
             <button
               type="submit"
-              id="register-button"
+              id="register-button-form"
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             >
               Register
@@ -57,4 +57,22 @@ export default class RegisterPage {
   }
 
   async afterRender() {}
+
+  showLoading() {
+    const button = document.querySelector("#register-button-form");
+    button.innerHTML = `
+      <div class="loader flex items-center justify-center">
+        <span class="inline-block w-5 h-5 loader border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+        <span class="ml-2 text-white">Loading...</span>
+      </div>`;
+    button.setAttribute("disabled", true);
+    button.classList.add("cursor-wait");
+  }
+
+  hideLoading() {
+    const button = document.querySelector("#register-button-form");
+    button.innerHTML = "Login";
+    button.removeAttribute("disabled");
+    button.classList.remove("cursor-wait");
+  }
 }
