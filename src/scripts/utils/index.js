@@ -48,4 +48,12 @@ export function activeLink() {
     link.classList.add("transform");
     link.classList.add("scale-105");
   }
+  if (!link && location.hash === "") {
+    const defaultLink = document.querySelector("[href='#/']");
+    if (defaultLink) {
+      defaultLink.classList.add("text-primary");
+      defaultLink.classList.add("transform");
+      defaultLink.classList.add("scale-105");
+    }
+  }
 }
