@@ -1,6 +1,6 @@
 import routes from "../routes/routes";
 import { getActiveRoute } from "../routes/url-parser";
-import { getAccesToken, removeAccesToken } from "../data/login";
+import { getAccessToken, logout } from "../utils/auth";
 import { generateLoggedInTemplate, generateLoggedOutTemplate } from "../template/template";
 import { transitionHelper, activeLink } from "../utils";
 
@@ -35,7 +35,7 @@ class App {
   }
 
   #setupNavigation() {
-    const token = getAccesToken();
+    const token = getAccessToken();
 
     if (token) {
       this.#navigationDrawer.innerHTML = generateLoggedInTemplate();
@@ -44,7 +44,7 @@ class App {
         event.preventDefault();
 
         if (confirm("Apakah Anda yakin ingin keluar?")) {
-          removeAccesToken();
+          logout();
 
           location.hash = "/login";
         }
@@ -56,7 +56,8 @@ class App {
 
   async renderPage() {
     const url = getActiveRoute();
-    const page = routes[url] || routes["*"];
+    const route = await routes[url]
+    const page = route || routes["*"];
 
    const transition = transitionHelper({
       updateDOM: async () => {

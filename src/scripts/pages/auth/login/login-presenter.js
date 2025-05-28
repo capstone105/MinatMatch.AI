@@ -16,8 +16,8 @@ export default class LoginPresenter {
       if (response.error) {
         throw new Error(response.message);
       }
-      this.#authModel.putAccessToken(response.data.token);
-      this.#view.loggedInSuccessfully();
+      await this.#authModel.putAccessToken(response.data.token);
+      await this.#view.loggedInSuccessfully();
     } catch (error) {
       this.#view.showError(error.message);
     } finally {

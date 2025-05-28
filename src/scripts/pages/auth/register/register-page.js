@@ -63,7 +63,7 @@ export default class RegisterPage {
 
   async afterRender() {
     const form = document.querySelector("#register-form");
-    const name = document.querySelector("#name");
+    const name = document.querySelector("#username");
     const email = document.querySelector("#email");
     const password = document.querySelector("#password");
 

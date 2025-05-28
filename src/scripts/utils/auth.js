@@ -38,7 +38,7 @@ export function checkUnauthenticatedRouteOnly(page) {
   const hasToken = !!getAccessToken();
 
   if (UNAUTHENTICATED_ROUTES.includes(currentRoute) && hasToken) {
-    window.location.hash = '/';
+    window.location.hash = '/add';
     return null;
   }
   return page;
@@ -62,9 +62,4 @@ export function logout() {
 
 export function isLoggedIn() {
   return !!getAccessToken();
-}
-
-export function getAuthHeader() {
-  const token = getAccessToken();
-  return token ? { Authorization: `Bearer ${token}` } : {};
 }

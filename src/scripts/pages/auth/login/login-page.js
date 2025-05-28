@@ -77,12 +77,15 @@ export default class LoginPage {
 
     demoButton.addEventListener("click", async (event) => {
       event.preventDefault();
-      await this.presenter.getLogin({ email: "admin@gmail.com", password: "1234" });
+      await this.presenter.getLogin({ email: "las123@gmail.com", password: "las123456" });
     })
   }
 
   loggedInSuccessfully() {
     location.hash = "/add";
+    setTimeout(() => {
+      window.location.reload();
+    }, 0);
   }
 
   showError(message) {
