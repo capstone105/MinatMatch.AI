@@ -1,4 +1,9 @@
+import * as MinatMatch from "../../../data/api.js";
+import RegisterPresenter from "./register-presenter";
+
 export default class RegisterPage {
+  #presenter;
+
   async render() {
     return `
       <section class="container mx-auto px-4">
@@ -56,7 +61,34 @@ export default class RegisterPage {
     `;
   }
 
-  async afterRender() {}
+  async afterRender() {
+    const form = document.querySelector("#register-form");
+    const name = document.querySelector("#name");
+    const email = document.querySelector("#email");
+    const password = document.querySelector("#password");
+
+    this.#presenter = new RegisterPresenter({
+      view: this,
+      model: MinatMatch,
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      await this.#presenter.getRegister({
+        name: name.value,
+        email: email.value,
+        password: password.value,
+      });
+    });
+  }
+
+  registeredSuccessfully() {
+    location.hash = "/login";
+  }
+
+  errorRegister(message) {
+    alert(`Registration failed: ${message}`);
+  }
 
   showLoading() {
     const button = document.querySelector("#register-button-form");

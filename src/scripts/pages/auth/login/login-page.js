@@ -1,7 +1,10 @@
-import LoginModel from "./../../../data/login.js";
+import * as MinatMatch from "../../../data/api.js";
 import LoginPresenter from "./login-presenter.js";
+import * as AuthModel from '../../../utils/auth.js';
 
 export default class LoginPage {
+  #presenter;
+
   async render() {
     return `
       <section class="container mx-auto px-4">
@@ -63,7 +66,8 @@ export default class LoginPage {
 
     this.presenter = new LoginPresenter({
       view: this,
-      model: new LoginModel(),
+      model: MinatMatch,
+      authModel: AuthModel,
     });
 
     form.addEventListener("submit", async (event) => {
@@ -77,8 +81,7 @@ export default class LoginPage {
     })
   }
 
-  loggedInSuccessfully(message) {
-    alert(message);
+  loggedInSuccessfully() {
     location.hash = "/add";
   }
 
