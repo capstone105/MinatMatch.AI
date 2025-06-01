@@ -21,7 +21,7 @@ export default class LoginPage {
                 type="email"
                 id="email"
                 placeholder="email"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
               />
             </div>
             <div class="mb-6">
@@ -32,13 +32,13 @@ export default class LoginPage {
                 type="password"
                 id="password"
                 placeholder="Password"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
               />
             </div>
             <button
               type="submit"
               id="login-button-form"
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring w-full"
             >
               Login
             </button>
@@ -46,7 +46,7 @@ export default class LoginPage {
           <button
             type="button"
             id="demo-button"
-            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-2"
+            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring mt-2"
           >
             Gunakan Akun Demo
           </button>
@@ -97,7 +97,7 @@ export default class LoginPage {
     button.innerHTML = `
       <div class="loader flex items-center justify-center">
         <span class="inline-block w-5 h-5 loader border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-        <span class="ml-2 text-white">Loading...</span>
+        <span class="ml-2 text-white">Logging in...</span>
       </div>`;
     button.setAttribute("disabled", true);
     button.classList.add("cursor-wait");
