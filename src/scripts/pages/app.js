@@ -56,10 +56,10 @@ class App {
 
   async renderPage() {
     const url = getActiveRoute();
-    const route = await routes[url]
-    const page = route || routes["*"];
+    const route = routes[url];
+    const page = route ? route() : routes["*"];
 
-   const transition = transitionHelper({
+    const transition = transitionHelper({
       updateDOM: async () => {
         this.#content.innerHTML = await page.render();
         page.afterRender();

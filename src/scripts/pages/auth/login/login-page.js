@@ -58,7 +58,6 @@ export default class LoginPage {
     const form = document.querySelector("#login-form");
     const email = document.querySelector("#email");
     const password = document.querySelector("#password");
-    const demoButton = document.querySelector("#demo-button");
 
     this.presenter = new LoginPresenter({
       view: this,
@@ -74,9 +73,6 @@ export default class LoginPage {
 
   loggedInSuccessfully() {
     location.hash = "/add";
-    setTimeout(() => {
-      window.location.reload();
-    }, 0);
   }
 
   showError(message) {

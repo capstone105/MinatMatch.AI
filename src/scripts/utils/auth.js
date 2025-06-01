@@ -35,9 +35,9 @@ export function removeAccessToken() {
 
 export function checkUnauthenticatedRouteOnly(page) {
   const currentRoute = getActiveRoute();
-  const hasToken = !!getAccessToken();
+  const hasToken = getAccessToken();
 
-  if (UNAUTHENTICATED_ROUTES.includes(currentRoute) && hasToken) {
+  if (UNAUTHENTICATED_ROUTES.includes(currentRoute) && !!hasToken) {
     window.location.hash = '/add';
     return null;
   }
@@ -45,8 +45,8 @@ export function checkUnauthenticatedRouteOnly(page) {
 }
 
 export function checkAuthenticatedRoute(page) {
-  const hasToken = !!getAccessToken();
-  
+  const hasToken = getAccessToken();
+  console.log('Checking authenticated route:', hasToken);
   if (!hasToken) {
     window.location.hash = '/';
     return null;

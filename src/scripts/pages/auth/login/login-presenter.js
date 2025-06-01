@@ -16,8 +16,13 @@ export default class LoginPresenter {
       if (response.error) {
         throw new Error(response.message);
       }
-      await this.#authModel.putAccessToken(response.data.token);
-      await this.#view.loggedInSuccessfully();
+      this.#authModel.putAccessToken(response.data.token);
+
+      const token = this.#authModel.getAccessToken();
+      if (!token) {
+        throw new Error("Token tidak tersedia");
+      }
+      this.#view.loggedInSuccessfully();
     } catch (error) {
       this.#view.showError(error.message);
     } finally {
