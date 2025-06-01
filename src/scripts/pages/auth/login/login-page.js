@@ -42,7 +42,8 @@ export default class LoginPage {
               id="login-button-form"
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring w-full"
             >
-              Login
+              <i class="fa-solid fa-right-to-bracket"></i>
+              <span class="ml-1">Login</span>
             </button>
           </form>
           <p class="p-3 text-base sm:text-lg md:text-xl mb-8 text-center">
