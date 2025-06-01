@@ -20,6 +20,7 @@ export default class RegisterPage {
                 type="text"
                 id="username"
                 placeholder="Username"
+                required
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
               />
             </div>
@@ -31,6 +32,7 @@ export default class RegisterPage {
                 type="email"
                 id="email"
                 placeholder="Email"
+                required
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
               />
             </div>
@@ -42,6 +44,7 @@ export default class RegisterPage {
                 type="password"
                 id="password"
                 placeholder="Password"
+                required
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
               />
             </div>

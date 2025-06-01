@@ -1,6 +1,6 @@
 import * as MinatMatch from "../../../data/api.js";
 import LoginPresenter from "./login-presenter.js";
-import * as AuthModel from '../../../utils/auth.js';
+import * as AuthModel from "../../../utils/auth.js";
 
 export default class LoginPage {
   #presenter;
@@ -21,6 +21,7 @@ export default class LoginPage {
                 type="email"
                 id="email"
                 placeholder="email"
+                required
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
               />
             </div>
@@ -32,6 +33,7 @@ export default class LoginPage {
                 type="password"
                 id="password"
                 placeholder="Password"
+                required
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
               />
             </div>
@@ -43,13 +45,6 @@ export default class LoginPage {
               Login
             </button>
           </form>
-          <button
-            type="button"
-            id="demo-button"
-            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring mt-2"
-          >
-            Gunakan Akun Demo
-          </button>
           <p class="p-3 text-base sm:text-lg md:text-xl mb-8 text-center">
             Don't have an account? <a href="#/register" class="text-blue-500">Register</a>
           </p>
@@ -74,11 +69,6 @@ export default class LoginPage {
       event.preventDefault();
       await this.presenter.getLogin({ email: email.value, password: password.value });
     });
-
-    demoButton.addEventListener("click", async (event) => {
-      event.preventDefault();
-      await this.presenter.getLogin({ email: "las123@gmail.com", password: "las123456" });
-    })
   }
 
   loggedInSuccessfully() {
