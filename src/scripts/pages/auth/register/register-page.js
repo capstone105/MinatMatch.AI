@@ -40,13 +40,22 @@ export default class RegisterPage {
               <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                placeholder="Password"
-                required
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
-              />
+              <div class="mb-6 relative">
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Password"
+                  required
+                  class="shadow appearance-none border rounded w-full py-2 pl-3 pr-10 text-gray-700 leading-tight focus:outline-none focus:ring"
+                />
+                <button
+                  type="button"
+                  id="toggle-password"
+                  class="absolute inset-y-0 right-0 px-3 flex items-center justify-center text-gray-600"
+                >
+                  <i class="fa-solid fa-eye" id="toggle-icon"></i>
+                </button>
+              </div>
             </div>
             <button
               type="submit"
@@ -82,6 +91,16 @@ export default class RegisterPage {
         email: email.value,
         password: password.value,
       });
+    });
+
+    const toggleBtn = document.querySelector("#toggle-password");
+    const toggleIcon = document.querySelector("#toggle-icon");
+
+    toggleBtn.addEventListener("click", () => {
+      const isPassword = password.type === "password";
+      password.type = isPassword ? "text" : "password";
+      toggleIcon.classList.toggle("fa-eye");
+      toggleIcon.classList.toggle("fa-eye-slash");
     });
   }
 
