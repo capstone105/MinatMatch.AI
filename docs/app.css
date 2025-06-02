@@ -554,6 +554,9 @@ video {
 .-top-14 {
   top: -3.5rem;
 }
+.-top-32 {
+  top: -8rem;
+}
 .left-0 {
   left: 0px;
 }
@@ -811,6 +814,10 @@ video {
 .bg-blue-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
+}
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 118 241 / var(--tw-bg-opacity, 1));
 }
 .bg-purple-100 {
   --tw-bg-opacity: 1;
@@ -1083,6 +1090,10 @@ header {
 
 .hover\:opacity-90:hover {
   opacity: 0.9;
+}
+
+.focus\:top-0:focus {
+  top: 0px;
 }
 
 .focus\:outline-none:focus {
