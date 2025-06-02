@@ -11,7 +11,7 @@ export default class RegisterPresenter {
     this.#view.showLoading();
     try {
       const response = await this.#model.register({ name, email, password });
-      if (response.error) {
+      if (response.status !== "success") {
         throw new Error(response.message);
       }
       this.#view.registeredSuccessfully();

@@ -13,7 +13,7 @@ export default class LoginPresenter {
     this.#view.showLoading();
     try {
       const response = await this.#model.login({ email, password });
-      if (response.error) {
+      if (response.status !== "success") {
         throw new Error(response.message);
       }
       this.#authModel.putAccessToken(response.data.token);
