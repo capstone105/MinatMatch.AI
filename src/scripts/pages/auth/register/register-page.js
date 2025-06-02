@@ -16,27 +16,31 @@ export default class RegisterPage {
               <label class="block text-gray-700 text-sm md:text-base font-bold mb-2" for="username">
                 Username
               </label>
-              <div class="mb-4 relative">
+              <div class="relative">
                 <input
                   type="text"
                   id="username"
                   placeholder="Username"
+                  aria-describedby="username-error"
                   required
                   class="shadow appearance-none border rounded w-full py-2 pl-11 pr-3 md:text-base text-gray-700 leading-tight focus:outline-none focus:ring"
                 />
                 <span class="absolute inset-y-0 left-0 px-3 flex items-center justify-center text-gray-600 bg-slate-200 rounded-l">
                   <i class="fa-solid fa-user"></i>
                 </span>
+              </div>
+              <p id="username-error" class="text-red-500 text-sm mt-1" role="alert" aria-live="polite"></p>
             </div>
             <div class="mb-4">
               <label class="block text-gray-700 text-sm md:text-base font-bold mb-2" for="email">
                 Email
               </label>
-              <div class="mb-4 relative">
+              <div class="relative">
                 <input
                   type="email"
                   id="email"
                   placeholder="Email"
+                  aria-describedby="email-error"
                   required
                   class="shadow appearance-none border rounded w-full py-2 pl-11 pr-3 md:text-base text-gray-700 leading-tight focus:outline-none focus:ring"
                 />
@@ -44,16 +48,18 @@ export default class RegisterPage {
                   <i class="fa-solid fa-envelope"></i>
                 </span>
               </div>
+              <p id="email-error" class="text-red-500 text-sm mt-1" role="alert" aria-live="polite"></p>
             </div>
             <div class="mb-6">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                 Password
               </label>
-              <div class="mb-6 relative">
+              <div class="relative">
                 <input
                   type="password"
                   id="password"
                   placeholder="Password"
+                  aria-describedby="password-error"
                   required
                   class="shadow appearance-none border rounded w-full py-2 px-11 text-gray-700 leading-tight focus:outline-none focus:ring"
                 />
@@ -70,6 +76,7 @@ export default class RegisterPage {
                   <i class="fa-solid fa-key"></i>
                 </span>
               </div>
+              <p id="password-error" class="text-red-500 text-sm mt-1" role="alert" aria-live="polite"></p>
             </div>
             <button
               type="submit"
@@ -98,8 +105,42 @@ export default class RegisterPage {
       model: MinatMatch,
     });
 
+    name.addEventListener("input", () => {
+      if (name.value.length < 3) {
+        this.showFieldError("username", "Username must be at least 3 characters long.");
+      } else {
+        this.showFieldError("username", "");
+      }
+    });
+    
+    email.addEventListener("input", () => {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email.value)) {
+        this.showFieldError("email", "Please enter a valid email address.");
+      } else {
+        this.showFieldError("email", "");
+      }
+    });
+
+    password.addEventListener("input", () => {
+      if (password.value.length < 6) {
+        this.showFieldError("password", "Password must be at least 6 characters long.");
+      } else {
+        this.showFieldError("password", "");
+      }
+    });
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (!name.value || !email.value || !password.value) {
+        alert("Please fill in all fields.");
+        return;
+      }
+      if (password.value.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return;
+      }
+
       await this.#presenter.getRegister({
         name: name.value,
         email: email.value,
@@ -118,6 +159,13 @@ export default class RegisterPage {
       toggleBtn.setAttribute("aria-label", isPassword ? "Hide password" : "Show password");
       toggleBtn.setAttribute("aria-pressed", isPassword ? "true" : "false");
     });
+  }
+
+  showFieldError(fieldId, message) {
+    const errorField = document.getElementById(`${fieldId}-error`);
+    if (errorField) {
+      errorField.textContent = message;
+    }
   }
 
   registeredSuccessfully() {
