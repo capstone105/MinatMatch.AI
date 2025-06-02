@@ -23,7 +23,7 @@ export default class RegisterPage {
                   placeholder="Username"
                   aria-describedby="username-error"
                   required
-                  class="shadow appearance-none border rounded w-full py-2 pl-11 pr-3 md:text-base text-gray-700 leading-tight focus:outline-none focus:ring"
+                  class="shadow appearance-none border rounded w-full py-2 pl-11 pr-3 text-sm md:text-base text-gray-700 leading-tight focus:outline-none focus:ring"
                 />
                 <span class="absolute inset-y-0 left-0 px-3 flex items-center justify-center text-gray-600 bg-slate-200 rounded-l">
                   <i class="fa-solid fa-user"></i>
@@ -42,7 +42,7 @@ export default class RegisterPage {
                   placeholder="Email"
                   aria-describedby="email-error"
                   required
-                  class="shadow appearance-none border rounded w-full py-2 pl-11 pr-3 md:text-base text-gray-700 leading-tight focus:outline-none focus:ring"
+                  class="shadow appearance-none border rounded w-full py-2 pl-11 pr-3 text-sm md:text-base text-gray-700 leading-tight focus:outline-none focus:ring"
                 />
                 <span class="absolute inset-y-0 left-0 px-3 flex items-center justify-center text-gray-600 bg-slate-200 rounded-l">
                   <i class="fa-solid fa-envelope"></i>
@@ -51,7 +51,7 @@ export default class RegisterPage {
               <p id="email-error" class="text-red-500 text-sm mt-1" role="alert" aria-live="polite"></p>
             </div>
             <div class="mb-6">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+              <label class="block text-gray-700 text-sm md:text-base font-bold mb-2" for="password">
                 Password
               </label>
               <div class="relative">
@@ -61,7 +61,7 @@ export default class RegisterPage {
                   placeholder="Password"
                   aria-describedby="password-error"
                   required
-                  class="shadow appearance-none border rounded w-full py-2 px-11 text-gray-700 leading-tight focus:outline-none focus:ring"
+                  class="shadow appearance-none border rounded w-full py-2 px-11 text-gray-700 text-sm md:text-base leading-tight focus:outline-none focus:ring"
                 />
                 <button
                   type="button"
