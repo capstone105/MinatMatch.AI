@@ -12,6 +12,13 @@
   animation-duration: 500ms;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
+
 @keyframes move-out {
   from {
     transform: translateX(0%);

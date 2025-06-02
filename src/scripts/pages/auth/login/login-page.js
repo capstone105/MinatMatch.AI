@@ -14,19 +14,24 @@ export default class LoginPage {
           </h1>
           <form id="login-form" class="mt-6 w-full max-w-md sm:w-96">
             <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+              <label class="block text-gray-700 text-sm md:text-base font-bold mb-2" for="email">
                 Email
               </label>
-              <input
-                type="email"
-                id="email"
-                placeholder="email"
-                required
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring"
-              />
+              <div class="mb-4 relative">
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="email"
+                  required
+                  class="shadow appearance-none border rounded w-full py-2 pl-11 pr-3 md:text-base text-gray-700 leading-tight focus:outline-none focus:ring"
+                />
+                <span class="absolute inset-y-0 left-0 px-3 flex items-center justify-center text-gray-600 bg-slate-200 rounded-l">
+                  <i class="fa-solid fa-envelope"></i>
+                </span>   
+              </div>          
             </div>
             <div class="mb-6">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+              <label class="block text-gray-700 text-sm md:text-base font-bold mb-2" for="password">
                 Password
               </label>
               <div class="mb-6 relative">
@@ -35,15 +40,20 @@ export default class LoginPage {
                 id="password"
                 placeholder="Password"
                 required
-                class="shadow appearance-none border rounded w-full py-2 pl-3 pr-10 text-gray-700 leading-tight focus:outline-none focus:ring"
+                class="shadow appearance-none border rounded w-full py-2 px-11 md:text-base text-gray-700 leading-tight focus:outline-none focus:ring"
               />
               <button
                 type="button"
                 id="toggle-password"
+                aria-label="Show password"
+                aria-pressed="false"   
                 class="absolute inset-y-0 right-0 px-3 flex items-center justify-center text-gray-600"
               >
                 <i class="fa-solid fa-eye" id="toggle-icon"></i>
               </button>
+              <span class="absolute inset-y-0 left-0 px-3 flex items-center justify-center text-gray-600 bg-slate-200 rounded-l">
+                <i class="fa-solid fa-key"></i>
+              </span>
             </div>
             <button
               type="submit"
@@ -54,7 +64,7 @@ export default class LoginPage {
               <span class="ml-1">Login</span>
             </button>
           </form>
-          <p class="p-3 text-base sm:text-lg md:text-xl mb-8 text-center">
+          <p class="p-3 text-sm md:text-base mt-4 text-center">
             Don't have an account? <a href="#/register" class="text-blue-500">Register</a>
           </p>
         </div>
@@ -86,6 +96,8 @@ export default class LoginPage {
       password.type = isPassword ? "text" : "password";
       toggleIcon.classList.toggle("fa-eye");
       toggleIcon.classList.toggle("fa-eye-slash");
+      toggleBtn.setAttribute("aria-label", isPassword ? "Hide password" : "Show password");
+      toggleBtn.setAttribute("aria-pressed", isPassword ? "true" : "false");
     });
   }
 
