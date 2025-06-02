@@ -59,6 +59,11 @@ class App {
     const route = routes[url];
     const page = route ? route() : routes["*"];
 
+    if (!page) {
+      window.location.reload();
+      return;
+    }
+
     const transition = transitionHelper({
       updateDOM: async () => {
         this.#content.innerHTML = await page.render();
