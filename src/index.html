@@ -13,6 +13,10 @@
 
 <body class="box-border">
   <header class="bg-white fixed top-0 left-0 w-full z-50">
+      <button id="skip-to-content"
+        class="fixed px-4 py-2 -top-32 focus:top-0 left-0 bg-primary text-white rounded-full z-50">
+        Skip to content
+      </button>
       <div class="container mx-auto px-8 md:px-14 lg:px-17 xl:px-20 py-5 flex justify-between items-center gap-8">
         <a class="pointer-events-none" href="#"><img src="images/logo.svg" alt="Logo" class="w-40"></a>
         <nav id="navigation-drawer"
@@ -29,7 +33,7 @@
       </div>
   </header>
 
-  <main id="main-content" class="min-h-screen"></main>
+  <main id="main-content" class="min-h-screen" tabindex="-1"></main>
 
 </body>
 

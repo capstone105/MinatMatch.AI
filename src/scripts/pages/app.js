@@ -2,18 +2,26 @@ import routes from "../routes/routes";
 import { getActiveRoute } from "../routes/url-parser";
 import { getAccessToken, logout } from "../utils/auth";
 import { generateLoggedInTemplate, generateLoggedOutTemplate } from "../template/template";
-import { transitionHelper, activeLink } from "../utils";
+import { transitionHelper, activeLink, setupSkipToContent } from "../utils";
 
 class App {
   #content = null;
   #drawerButton = null;
   #navigationDrawer = null;
+  #skipToContent = null;
 
-  constructor({ navigationDrawer, drawerButton, content }) {
+  constructor({ navigationDrawer, drawerButton, content, skipToContent }) {
     this.#content = content;
     this.#drawerButton = drawerButton;
     this.#navigationDrawer = navigationDrawer;
+    this.#skipToContent = skipToContent;
 
+    this.#init();
+  }
+
+  #init() {
+    setupSkipToContent(this.#skipToContent, this.#content);
+    console.log(this.#skipToContent, this.#content);
     this.#setupDrawer();
   }
 
