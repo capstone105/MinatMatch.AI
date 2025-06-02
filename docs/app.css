@@ -603,6 +603,12 @@ video {
 .mt-24 {
   margin-top: 6rem;
 }
+.mt-4 {
+  margin-top: 1rem;
+}
+.mt-5 {
+  margin-top: 1.25rem;
+}
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -632,10 +638,6 @@ video {
 }
 .h-6 {
   height: 1.5rem;
-}
-.max-h-max {
-  max-height: -moz-max-content;
-  max-height: max-content;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -775,6 +777,10 @@ video {
 .rounded-md {
   border-radius: 0.375rem;
 }
+.rounded-l {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
 .border {
   border-width: 1px;
 }
@@ -806,6 +812,10 @@ video {
 .bg-purple-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 232 255 / var(--tw-bg-opacity, 1));
+}
+.bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity, 1));
 }
 .bg-transparent {
   background-color: transparent;
@@ -844,6 +854,10 @@ video {
 .p-5 {
   padding: 1.25rem;
 }
+.px-11 {
+  padding-left: 2.75rem;
+  padding-right: 2.75rem;
+}
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -872,11 +886,11 @@ video {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
 }
-.pl-3 {
-  padding-left: 0.75rem;
+.pl-11 {
+  padding-left: 2.75rem;
 }
-.pr-10 {
-  padding-right: 2.5rem;
+.pr-3 {
+  padding-right: 0.75rem;
 }
 .text-center {
   text-align: center;
@@ -1012,6 +1026,13 @@ video {
 ::view-transition-new(root) {
   animation-name: move-in;
   animation-duration: 500ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
 }
 
 @keyframes move-out {
@@ -1153,6 +1174,11 @@ header {
   .md\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .md\:text-xl {
