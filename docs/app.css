@@ -597,6 +597,9 @@ video {
 .ml-2 {
   margin-left: 0.5rem;
 }
+.mt-1 {
+  margin-top: 0.25rem;
+}
 .mt-20 {
   margin-top: 5rem;
 }
@@ -977,6 +980,10 @@ video {
 .text-primary {
   --tw-text-opacity: 1;
   color: rgb(148 118 241 / var(--tw-text-opacity, 1));
+}
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
 }
 .text-white {
   --tw-text-opacity: 1;
