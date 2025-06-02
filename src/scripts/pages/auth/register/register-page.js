@@ -140,6 +140,10 @@ export default class RegisterPage {
         alert("Password must be at least 6 characters long.");
         return;
       }
+      if (name.value.length < 3) {
+        alert("Username must be at least 3 characters long.");
+        return;
+      }
 
       await this.#presenter.getRegister({
         name: name.value,
