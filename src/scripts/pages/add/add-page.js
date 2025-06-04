@@ -1,133 +1,106 @@
 export default class AddPage {
   async render() {
     return `
-      <section class="container mx-auto px-4">
+      <section class="container mx-auto px-4 bg">
         <div class="p-5 flex flex-col items-center min-h-screen">
           <h1 class="mt-24 md:mt-28 lg:mt-32 text-xl sm:text-2xl md:text-3xl font-extrabold mb-4 text-center">
             Add Data
           </h1>
 
-        <form class="space-y-6 p-1">
-          <div class="flex space-x-8 justify-between items-center max-w-xl mx-auto">
-            <div class="flex flex-col">
+          <form id="addForm" class="space-y-6 w-full max-w-2xl p-6">
+            <div class="flex flex-col gap-1 mb-2">
               <label class="font-semibold">Name</label>
-              <input type="text" name="name" class="border border-gray-300 rounded-md p-2 w-full" placeholder="Enter name">
+              <input type="text" name="name" class="border border-gray-300 rounded-md p-2 w-full" placeholder="Enter name" required>
             </div>
-            <div class="flex flex-col">
+
+            <div class="flex flex-col gap-1 mb-2">
+              <label class="font-semibold">Gender</label>
+              <select name="gender" class="border border-gray-300 rounded-md p-2 w-full" required>
+                <option value="" disabled selected>Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-1 mb-2">
+              <label class="font-semibold">Age</label>
+              <input type="number" name="age" class="border border-gray-300 rounded-md p-2 w-full" placeholder="Enter age" required>
+            </div>
+
+            <div class="flex flex-col gap-1 mb-2">
               <label class="font-semibold">GPA</label>
-              <input type="text" name="gpa" class="border border-gray-300 rounded-md p-2 w-full" placeholder="2.0 - 4.0">
-            </div>
-          </div>
-
-          <div id="rating-categories" class="space-y-12">
-            <!-- Extracurricular Activities -->
-            <div class="space-y-4">
-              <div class="flex items-start space-x-4">
-                <div class="w-6 h-6 bg-yellow-400 rounded-full border-2 font-bold text-center text-sm">1</div>
-                <div class="w-full">
-                  <p class="font-semibold">Extracurricular Activities</p>
-                  <p class="text-sm text-gray-600">The number of extracurricular activities the student has participated in
-                    outside of their regular courses.</p>
-                </div>
-              </div>
-              <div class="flex justify-between items-center max-w-xl mx-auto">
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="extracurricular" value="very_poor" class="form-radio text-blue-600">
-                  Very poor
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="extracurricular" value="poor" class="form-radio text-blue-600">
-                  Poor
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="extracurricular" value="fair" class="form-radio text-blue-600">
-                  Fair
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="extracurricular" value="good" class="form-radio text-blue-600">
-                  Good
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="extracurricular" value="excellent" class="form-radio text-blue-600">
-                  Excellent
-                </label>
-                <div class="flex-row justify-center bg-purple-100 px-4 py-1 rounded text-sm font-semibold"><small>Score</small><p class="text-center">0–4</p></div>
-              </div>
+              <input type="number" name="gpa" step="0.01" min="0" max="4" class="border border-gray-300 rounded-md p-2 w-full" placeholder="2.0 - 4.0" required>
             </div>
 
-            <!-- Internships -->
-            <div class="space-y-4">
-              <div class="flex items-start space-x-4">
-                <div class="w-6 h-6 bg-yellow-400 rounded-full border-2 font-bold text-center text-sm">2</div>
-                <div class="w-full">
-                  <p class="font-semibold">Internships</p>
-                  <p class="text-sm text-gray-600">The number of internships the student has completed.</p>
-                </div>
-              </div>
-              <div class="flex justify-between items-center max-w-xl mx-auto">
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="internship" value="very_poor" class="form-radio text-blue-600">
-                  Very poor
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="internship" value="poor" class="form-radio text-blue-600">
-                  Poor
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="internship" value="fair" class="form-radio text-blue-600">
-                  Fair
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="internship" value="good" class="form-radio text-blue-600">
-                  Good
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="internship" value="excellent" class="form-radio text-blue-600">
-                  Excellent
-                </label>
-                <div class="flex-row justify-center bg-purple-100 px-4 py-1 rounded text-sm font-semibold"><small>Score</small><p class="text-center">0–4</p></div>
-              </div>
+            <div class="flex flex-col gap-1 mb-2">
+              <label class="font-semibold">Interested Domain</label>
+              <select name="interestedDomain" class="border border-gray-300 rounded-md p-2 w-full" required>
+                <option value="" disabled selected>Select</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="Software Development">Software Development</option>
+              </select>
             </div>
 
-            <!-- Projects -->
-            <div class="space-y-4">
-              <div class="flex items-start space-x-4">
-                <div class="w-6 h-6 bg-yellow-400 rounded-full border-2 font-bold text-center text-sm">3</div>
-                <div class="w-full">
-                  <p class="font-semibold">Projects</p>
-                  <p class="text-sm text-gray-600">The number of relevant projects completed by the student.</p>
-                </div>
-              </div>
-              <div class="flex justify-between items-center max-w-xl mx-auto">
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="projects" value="very_poor" class="form-radio text-blue-600">
-                  Very poor
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="projects" value="poor" class="form-radio text-blue-600">
-                  Poor
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="projects" value="fair" class="form-radio text-blue-600">
-                  Fair
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="projects" value="good" class="form-radio text-blue-600">
-                  Good
-                </label>
-                <label class="flex flex-col items-center text-xs">
-                  <input type="radio" name="projects" value="excellent" class="form-radio text-blue-600">
-                  Excellent
-                </label>
-                <div class="flex-row justify-center bg-purple-100 px-4 py-1 rounded text-sm font-semibold"><small>Score</small><p class="text-center">0–4</p></div>
-              </div>
+            <div class="flex flex-col gap-1 mb-2">
+              <label class="font-semibold">Project</label>
+              <select name="projects" class="border border-gray-300 rounded-md p-2 w-full" required>
+                <option value="" disabled selected>Select</option>
+                <option value="Chatbot Development">Chatbot Development</option>
+                <option value="Data Analytics">Data Analytics</option>
+                <option value="E-commerce Website">E-commerce Website</option>
+                <option value="Full-Stack Web App">Full-Stack Web App</option>
+                <option value="Network Security">Network Security</option>
+              </select>
             </div>
-          </div>
-        </form>
+
+            <div class="flex flex-col gap-1 mb-2">
+              <label class="font-semibold">Interest in Data Science</label>
+              <select name="datascience" class="border border-gray-300 rounded-md p-2 w-full" required>
+                <option value="" disabled selected>Select level</option>
+                <option value="Weak">Weak</option>
+                <option value="Average">Average</option>
+                <option value="Strong">Strong</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-1 mb-2">
+              <label class="font-semibold">Interest in Database</label>
+              <select name="database" class="border border-gray-300 rounded-md p-2 w-full" required>
+                <option value="" disabled selected>Select level</option>
+                <option value="Weak">Weak</option>
+                <option value="Average">Average</option>
+                <option value="Strong">Strong</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-1 mb-2">
+              <label class="font-semibold">Interest in Programming</label>
+              <select name="programming" class="border border-gray-300 rounded-md p-2 w-full" required>
+                <option value="" disabled selected>Select level</option>
+                <option value="Weak">Weak</option>
+                <option value="Average">Average</option>
+                <option value="Strong">Strong</option>
+              </select>
+            </div>
+
+            <div class="flex justify-center mt-6">
+              <button type="submit" class="bg-[#4834D4] text-white px-6 py-2 rounded-md hover:bg-[#5946d6] transition duration-200">
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
       </section>
     `;
   }
 
-  async afterRender() {}
+  async afterRender() {
+    const form = document.getElementById('addForm');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+    });
+  }
 }
