@@ -4,7 +4,7 @@ import FeaturesPage from "../pages/features/features";
 import LoginPage from "../pages/auth/login/login-page";
 import RegisterPage from "../pages/auth/register/register-page";
 import AddPage from "../pages/add/add-page";
-import CareerPage from "../pages/career/career-page";
+import CareerPage from "../pages/history/history-page";
 import NotFoundPage from "../pages/not-found/not-found-page";
 import { checkAuthenticatedRoute, checkUnauthenticatedRouteOnly } from "../utils/auth";
 
