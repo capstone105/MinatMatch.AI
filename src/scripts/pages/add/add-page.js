@@ -140,6 +140,7 @@ export default class AddPage {
 
       this.#presenter.handleAdd({
         name: document.getElementById("name").value,
+        gender: document.getElementById("gender").value,
         age: document.getElementById("age").value,
         gpa: document.getElementById("gpa").value,
         interestedDomain: document.getElementById("interestedDomain").value,
