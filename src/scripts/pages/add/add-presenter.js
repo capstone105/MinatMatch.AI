@@ -28,7 +28,7 @@ export default class AddPresenter {
         console.error(response);
         throw new Error(response.message);
       }
-      this.#view.showPredictionResult(response);
+      this.#view.showResult(response);
     } catch (error) {
       this.#view.showError(error.message);
     }

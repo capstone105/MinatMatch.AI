@@ -99,7 +99,16 @@ export default class AddPage {
               </button>
             </div>
           </form>
-          <div id="prediction-result" class="mt-8 w-full max-w-2xl"></div>
+          <section id="result-container" class="fixed hidden items-center justify-center bg-slate-400 bg-opacity-50 top-0 bottom-0 right-0 left-0 z-50">
+            <div class="center bg-white p-6 rounded-lg shadow-lg min-w-[300px] max-w-md relative">
+              <h2 class="text-2xl text-center font-semibold mb-4">Your Career</h2>
+              <div id="result-content" class="text-gray-700">
+              </div>
+              <span id="close-result"  class="absolute top-2 right-2 cursor-pointe text-xl px-2 text-gray-500 hover:text-gray-700">
+                <i class="fa-solid fa-xmark"></i>
+              </span>
+            </div>
+          </section>
         </div>
       </section>
     `;
@@ -111,10 +120,18 @@ export default class AddPage {
       model: MinatMatch,
       authModel: getAccessToken(),
     });
-    this.#resultContainer = document.getElementById("prediction-result");
-    const form = document.getElementById('addForm');
+    this.#resultContainer = document.getElementById("result-container");
+    const form = document.getElementById("addForm");
     const fields = [
-      "name", "gender", "age", "gpa", "interestedDomain", "projects", "datascience", "database", "programming"
+      "name",
+      "gender",
+      "age",
+      "gpa",
+      "interestedDomain",
+      "projects",
+      "datascience",
+      "database",
+      "programming",
     ];
 
     fields.forEach((field) => {
@@ -135,7 +152,7 @@ export default class AddPage {
       });
     });
 
-    form.addEventListener('submit', async (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       this.#presenter.handleAdd({
@@ -181,21 +198,25 @@ export default class AddPage {
     button.classList.remove("cursor-wait");
   }
 
-  showPredictionResult(result) {
-    if (!this.#resultContainer) return;
-    if (result && result.status === "success") {
-      this.#resultContainer.innerHTML = `
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-          <strong>Prediction Result:</strong> ${result.data}
-        </div>
-      `;
-    } else {
-      this.#resultContainer.innerHTML = `
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-          <strong>Error:</strong> ${result && result.message ? result.message : "Prediction failed."}
-        </div>
-      `;
-    }
+  showResult(result) {
+    this.#resultContainer.style.display = "flex";
+    const resultContent = document.getElementById("result-content");
+    const closeButton = document.getElementById("close-result");
+
+    const predictions = result.data.predictions;
+    let resultHTML = "";
+    predictions.forEach((prediction, index) => {
+      resultHTML += `
+          <li>
+            <span id="result-${index + 1}">${prediction.career}: </span>
+            <span id="result-persentase-${index + 1}">${(prediction.probability * 100).toFixed(2)}%</span>
+          </li>`;
+    });
+    resultContent.innerHTML = `<ul class="pl-5 text-center text-lg">${resultHTML}</ul>`;
+
+    closeButton.addEventListener("click", () => {
+      this.#resultContainer.style.display = "none";
+    });
   }
 
   errorAdd(message) {
