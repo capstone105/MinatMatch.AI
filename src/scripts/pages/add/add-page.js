@@ -94,7 +94,7 @@ export default class AddPage {
               <p id="programming-error" class="text-red-500 text-sm mt-1" role="alert" aria-live="polite"></p>
             </div>
             <div class="flex justify-center mt-6">
-              <button type="submit" id="add-button-form" class="bg-[#4834D4] text-white px-6 py-2 rounded-md hover:bg-[#5946d6] transition duration-200">
+              <button type="submit" id="add-button-form" class="w-32 py-1 rounded-full text-[#4834D4] text-center border border-[#4834D4] bg-white shadow-[0_4px_20px_rgba(93,52,241,0.3)] hover:bg-indigo-50 transition">
                 Submit
               </button>
             </div>

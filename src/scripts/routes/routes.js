@@ -7,6 +7,7 @@ import AddPage from "../pages/add/add-page";
 import CareerPage from "../pages/history/history-page";
 import NotFoundPage from "../pages/not-found/not-found-page";
 import { checkAuthenticatedRoute, checkUnauthenticatedRouteOnly } from "../utils/auth";
+import ProfilePage from "../pages/profile/profile-page";
 
 const routes = {
   "/": () => checkUnauthenticatedRouteOnly(new HomePage()),
@@ -16,6 +17,7 @@ const routes = {
   "/register": () => checkUnauthenticatedRouteOnly(new RegisterPage()),
   "/add": () => checkAuthenticatedRoute(new AddPage()),
   "/career": () => checkAuthenticatedRoute(new CareerPage()),
+  "/profile": () => checkAuthenticatedRoute(new ProfilePage()),
   "*": new NotFoundPage(),
 };
 
