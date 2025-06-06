@@ -23,7 +23,7 @@ export default class HistoryPage {
     const historyContainer = document.querySelector("#history-container");
     historyContainer.innerHTML = `
         <div class="text-right mb-4">
-          <button id="delete-history-button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring">
+          <button id="delete-history-button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:ring">
             <i class="fa-solid fa-trash"></i> Delete All
           </button>
         </div>
