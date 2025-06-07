@@ -2,6 +2,7 @@ const common = require("./webpack.common.js");
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const path = require("path");
 const { InjectManifest } = require("workbox-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -22,6 +23,7 @@ module.exports = merge(common, {
         },
         extractComments: false,
       }),
+      new CssMinimizerPlugin(),
     ],
   },
   module: {
