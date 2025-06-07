@@ -1,0 +1,33 @@
+{
+  "id": "/#/",
+  "start_url": "/#/",
+  "scope": "/",
+  "name": "MinatMatch.Ai App",
+  "short_name": "MinatMatch",
+  "description": "MinatMatch.AI adalah platform AI yang membantu mahasiswa menemukan jalur karier yang sesuai berdasarkan data akademik dan keterampilan mereka.",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#d97706",
+  "icons": [
+    {
+      "src": "images/icons/icon.svg",
+      "type": "image/png",
+      "sizes": "176x176",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/screenshots/app-01.png",
+      "sizes": "1919x1027",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "images/screenshots/app-02.png",
+      "sizes": "412x912",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}
