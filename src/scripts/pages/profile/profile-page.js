@@ -45,12 +45,12 @@ export default class ProfilePage {
             </button>
           </div>
 
-          <div id="edit-profile-modal" class="fixed inset-0 bg-black bg-opacity-40 items-center justify-center z-50 hidden">
+          <div id="edit-profile-modal" class="fixed inset-0 bg-black bg-opacity-40 items-center justify-center z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="edit-profile-title" tabindex="-1">
             <div class="bg-white rounded-xl shadow-xl p-6 w-full max-w-md mx-4 relative">
               <button id="close-edit-profile" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-xl">
                 <i class="fas fa-times"></i>
               </button>
-              <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+              <h2 id="edit-profile-title" class="text-xl font-bold text-gray-800 mb-6 flex items-center">
                 <i class="fas fa-user-edit mr-2 text-blue-500"></i> Edit Profile
               </h2>
               <form id="profile-form">
@@ -108,12 +108,12 @@ export default class ProfilePage {
             </div>
           </div>
 
-          <div id="change-password-modal" class="fixed inset-0 bg-black bg-opacity-40 items-center justify-center z-50 hidden">
+          <div id="change-password-modal" class="fixed inset-0 bg-black bg-opacity-40 items-center justify-center z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="change-password-title" tabindex="-1">
             <div class="bg-white rounded-xl shadow-xl p-6 w-full max-w-md mx-4 relative">
               <button id="close-change-password" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-xl">
                 <i class="fas fa-times"></i>
               </button>
-              <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+              <h2 id="change-password-title" class="text-xl font-bold text-gray-800 mb-6 flex items-center">
                 <i class="fas fa-lock mr-2 text-yellow-500"></i> Change Password
               </h2>
               <form id="password-form-modal">
@@ -248,6 +248,11 @@ export default class ProfilePage {
     changePasswordBtn.addEventListener("click", () => {
       changePasswordModal.classList.remove("hidden");
       changePasswordModal.classList.add("flex");
+      // Fokus ke input oldPassword saat modal password dibuka
+      setTimeout(() => {
+        const oldPasswordInput = document.getElementById("oldPassword");
+        if (oldPasswordInput) oldPasswordInput.focus();
+      }, 100);
     });
     closeChangePassword.addEventListener("click", () => {
       changePasswordModal.classList.add("hidden");
@@ -289,6 +294,11 @@ export default class ProfilePage {
     } else {
       profilePicPreview.src = "images/profile/puffin.jpg";
     }
+    // Fokus ke input name saat modal dibuka
+    setTimeout(() => {
+      const nameInput = document.getElementById("name");
+      if (nameInput) nameInput.focus();
+    }, 100);
   }
 
   showFieldError(fieldId, message) {
