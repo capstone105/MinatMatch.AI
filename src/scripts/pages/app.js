@@ -21,7 +21,6 @@ class App {
 
   #init() {
     setupSkipToContent(this.#skipToContent, this.#content);
-    console.log(this.#skipToContent, this.#content);
     this.#setupDrawer();
   }
 
