@@ -3,7 +3,7 @@ export function generateLoggedInTemplate() {
     <div class="flex flex-col gap-4 lg:flex-row lg:gap-14 items-center">
       <ul id="nav-list" class="flex flex-col gap-1 lg:flex-row items-center">
         <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/add">Add Data</a></li>
-        <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/career">History</a></li>
+        <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/history">History</a></li>
         <li><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/profile">Profile</a></li>
       </ul>
       <div id="auth-controls" class="flex flex-col gap-4 lg:flex-row items-center">

@@ -16,7 +16,7 @@ const routes = {
   "/login": () => checkUnauthenticatedRouteOnly(new LoginPage()),
   "/register": () => checkUnauthenticatedRouteOnly(new RegisterPage()),
   "/add": () => checkAuthenticatedRoute(new AddPage()),
-  "/career": () => checkAuthenticatedRoute(new HistoryPage()),
+  "/history": () => checkAuthenticatedRoute(new HistoryPage()),
   "/profile": () => checkAuthenticatedRoute(new ProfilePage()),
   "*": new NotFoundPage(),
 };
