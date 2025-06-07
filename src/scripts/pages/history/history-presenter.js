@@ -39,4 +39,19 @@ export default class HistoryPresenter {
       this.#view.hideLoading();
     }
   }
+
+  async deleteHistoryById(id) {
+    this.#view.showLoading();
+    try {
+      const response = await this.#model.deletePredictionById(id, this.#authModel);
+      if (response.status !== "success") {
+        throw new Error(response.message);
+      }
+      await this.getHistory();
+    } catch (error) {
+      this.#view.showError(error.message);
+    } finally {
+      this.#view.hideLoading();
+    }
+  }
 }

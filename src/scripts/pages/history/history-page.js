@@ -44,28 +44,40 @@ export default class HistoryPage {
   }
 
   displayHistory(data) {
-    const historyList = document.getElementById('history-list');
-    historyList.innerHTML = '';
+    const historyList = document.getElementById("history-list");
+    historyList.innerHTML = "";
 
     if (!Array.isArray(data) || data.length === 0) {
       historyList.innerHTML = '<p class="text-gray-500">No recommendation history yet</p>';
       return;
     }
 
-  data.forEach(item => {
-  const wrapper = document.createElement('div');
-  wrapper.className = `bg-white shadow-md rounded-lg p-4 mb-4`;
+    data.forEach((item) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = `bg-white shadow-md rounded-lg p-4 mb-4 relative`;
 
-  wrapper.innerHTML = `
+      wrapper.innerHTML = `
     <h3 class="text-lg font-semibold mb-2">${item.name}</h3>
     <p class="text-gray-600 mb-2">Date: ${new Date(item.createdAt).toLocaleString()}</p>
     <ul class="flex-row sm:flex gap-5 justify-between pl-5">
-      ${item.predictions.map(pred => `<li>${pred.career}: ${(pred.probability * 100).toFixed(2)}%</li>`).join('')}
+      ${item.predictions.map((pred) => `<li>${pred.career}: ${(pred.probability * 100).toFixed(2)}%</li>`).join("")}
     </ul>
+    <button class="absolute top-2 right-2 text-red-500 hover:text-red-700 rounded-full p-2 delete-history-item-btn" data-id="${
+      item._id
+    }">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
   `;
 
-  historyList.appendChild(wrapper);
-});
+      historyList.appendChild(wrapper);
+    });
+
+    historyList.querySelectorAll(".delete-history-item-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const id = btn.getAttribute("data-id");
+        this.#presenter.deleteHistoryById(id);
+      });
+    });
   }
 
   showLoading() {

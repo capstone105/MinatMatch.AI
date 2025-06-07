@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 export default class AddPresenter {
   #view;
   #model;
@@ -22,12 +24,12 @@ export default class AddPresenter {
         datascience,
         database,
         programming
-      }
-      );
+      });
       if (response.status !== "success") {
-        console.error(response);
+        this.#view.showError(error.message);
         throw new Error(response.message);
       }
+      this.#view.showSuccess("Prediction successful!");
       this.#view.showResult(response);
     } catch (error) {
       this.#view.showError(error.message);

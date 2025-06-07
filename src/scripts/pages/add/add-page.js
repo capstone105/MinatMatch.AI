@@ -1,6 +1,7 @@
 import AddPresenter from "./add-presenter";
 import * as MinatMatch from "../../data/api.js";
 import { getAccessToken } from "../../utils/auth.js";
+import Swal from "sweetalert2";
 
 export default class AddPage {
   #presenter;
@@ -177,7 +178,41 @@ export default class AddPage {
   }
 
   showError(message) {
-    alert(`Error: ${message}`);
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "error",
+      title: message,
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      background: "#ef4444",
+      color: "#fff",
+      customClass: {
+        popup: "rounded-lg shadow-lg px-4 py-2",
+        title: "text-white",
+        icon: "text-white",
+      },
+    });
+  }
+
+  showSuccess(message) {
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "success",
+      title: message,
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      background: "#22c55e",
+      color: "#fff",
+      customClass: {
+        popup: "rounded-lg shadow-lg px-4 py-2",
+        title: "text-white",
+        icon: "text-white",
+      },
+    });
   }
 
   showLoading() {
