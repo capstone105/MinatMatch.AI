@@ -146,6 +146,7 @@ export default class ProfilePage {
           <div id="loading-indicator" class="fixed inset-0 items-center justify-center bg-gray-100 bg-opacity-75 z-50 hidden">
             <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
           </div>
+          <div id="aria-live-message" class="sr-only" aria-live="polite" role="status" tabindex="-1"></div>
         </div>
       </section>
     `;
@@ -240,6 +241,16 @@ export default class ProfilePage {
       if (!valid) return;
       const profilePic = profilePicInput.files[0] || null;
       await this.#presenter.saveProfile({ name, email, profilePic });
+      const modal = document.getElementById("edit-profile-modal");
+      if (modal) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+
+      setTimeout(() => {
+        const editBtn = document.getElementById("edit-profile-btn");
+        if (editBtn) editBtn.focus();
+      }, 100);
     });
 
     const changePasswordBtn = document.getElementById("change-password-btn");
@@ -248,7 +259,6 @@ export default class ProfilePage {
     changePasswordBtn.addEventListener("click", () => {
       changePasswordModal.classList.remove("hidden");
       changePasswordModal.classList.add("flex");
-      // Fokus ke input oldPassword saat modal password dibuka
       setTimeout(() => {
         const oldPasswordInput = document.getElementById("oldPassword");
         if (oldPasswordInput) oldPasswordInput.focus();
@@ -264,6 +274,15 @@ export default class ProfilePage {
       const oldPassword = document.getElementById("oldPassword").value;
       const newPassword = document.getElementById("newPassword").value;
       await this.#presenter.changePassword({ oldPassword, newPassword });
+      const changePasswordModal = document.getElementById("change-password-modal");
+      if (changePasswordModal) {
+        changePasswordModal.classList.add("hidden");
+        changePasswordModal.classList.remove("flex");
+      }
+      setTimeout(() => {
+        const changeBtn = document.getElementById("change-password-btn");
+        if (changeBtn) changeBtn.focus();
+      }, 100);
     });
 
     document.getElementById("delete-account-btn").addEventListener("click", async () => {
@@ -294,7 +313,6 @@ export default class ProfilePage {
     } else {
       profilePicPreview.src = "images/profile/puffin.jpg";
     }
-    // Fokus ke input name saat modal dibuka
     setTimeout(() => {
       const nameInput = document.getElementById("name");
       if (nameInput) nameInput.focus();
@@ -362,6 +380,14 @@ export default class ProfilePage {
   }
 
   showSuccess(message) {
+    const ariaLive = document.getElementById("aria-live-message");
+    if (ariaLive) {
+      ariaLive.textContent = "";
+      setTimeout(() => {
+        ariaLive.textContent = message;
+        ariaLive.focus && ariaLive.focus();
+      }, 100);
+    }
     Swal.fire({
       toast: true,
       position: "top-end",
@@ -381,6 +407,14 @@ export default class ProfilePage {
   }
 
   showError(message) {
+    const ariaLive = document.getElementById("aria-live-message");
+    if (ariaLive) {
+      ariaLive.textContent = "";
+      setTimeout(() => {
+        ariaLive.textContent = message;
+        ariaLive.focus && ariaLive.focus();
+      }, 100);
+    }
     Swal.fire({
       toast: true,
       position: "top-end",

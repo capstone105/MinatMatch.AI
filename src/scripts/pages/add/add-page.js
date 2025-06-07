@@ -238,7 +238,6 @@ export default class AddPage {
     const resultContent = document.getElementById("result-content");
     const closeButton = document.getElementById("close-result");
 
-    // Set accessibility attributes
     resultContent.setAttribute("tabindex", "-1");
     resultContent.setAttribute("aria-live", "polite");
     resultContent.setAttribute("role", "status");
@@ -254,7 +253,6 @@ export default class AddPage {
     });
     resultContent.innerHTML = `<ul class="pl-5 text-center text-lg" role="list" aria-label="Recommendation results">${resultHTML}</ul>`;
 
-    // Make close button accessible
     closeButton.setAttribute("tabindex", "0");
     closeButton.setAttribute("role", "button");
     closeButton.setAttribute("aria-label", "Close result");
@@ -266,7 +264,6 @@ export default class AddPage {
       }
     });
 
-    // Move focus to result for screen reader
     setTimeout(() => {
       resultContent.focus();
     }, 100);
