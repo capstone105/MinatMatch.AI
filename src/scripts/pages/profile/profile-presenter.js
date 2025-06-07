@@ -1,5 +1,3 @@
-import { getProfile, updateProfile, changePassword, deleteAccount } from "../../data/api.js";
-import * as MinatMatch from "../../data/api.js";
 export default class ProfilePresenter {
   #view;
   #model;
@@ -12,6 +10,7 @@ export default class ProfilePresenter {
   }
 
   async loadProfile() {
+    this.#view.showLoading();
     try {
       const response = await this.#model.getProfile(this.#authModel);
       if (response.status !== "success") {
@@ -20,11 +19,13 @@ export default class ProfilePresenter {
       this.#view.showProfile(response.data);
     } catch (error) {
       this.#view.showError(error.message);
+    } finally {
+      this.#view.hideLoading();
     }
   }
 
   async saveProfile({ name, email, profilePic }) {
-    this.#view.showLoading();
+    this.#view.showLoadingSave();
     try {
       const response = await this.#model.updateProfile(this.#authModel, { name, email, profilePic });
       if (response.status !== "success") {
@@ -35,7 +36,7 @@ export default class ProfilePresenter {
     } catch (error) {
       this.#view.showError(error.message);
     } finally {
-      this.#view.hideLoading();
+      this.#view.hideLoadingSave();
     }
   }
 

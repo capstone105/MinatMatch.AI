@@ -1,6 +1,7 @@
 import ProfilePresenter from "./profile-presenter.js";
 import * as MinatMatch from "../../data/api.js";
 import { getAccessToken, removeAccessToken } from "../../utils/auth";
+import Swal from "sweetalert2";
 
 export default class ProfilePage {
   #presenter;
@@ -142,6 +143,9 @@ export default class ProfilePage {
               </form>
             </div>
           </div>
+          <div id="loading-indicator" class="fixed inset-0 items-center justify-center bg-gray-100 bg-opacity-75 z-50 hidden">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+          </div>
         </div>
       </section>
     `;
@@ -194,7 +198,7 @@ export default class ProfilePage {
         if (file.size > 2 * 1024 * 1024) {
           this.showError("Profile picture must be less than 2MB.");
           profilePicInput.value = "";
-          profilePicPreview.src = this.#profileData?.profilePic || "https://ui-avatars.com/api/?name=" + encodeURIComponent(this.#profileData?.name || "User");
+          profilePicPreview.src = this.#profileData?.profilePic || "images/profile/puffin.jpg";
           return;
         }
         const reader = new FileReader();
@@ -205,8 +209,8 @@ export default class ProfilePage {
       }
     });
 
-    document.querySelectorAll(".toggle-password").forEach(icon => {
-      icon.addEventListener("click", function() {
+    document.querySelectorAll(".toggle-password").forEach((icon) => {
+      icon.addEventListener("click", function () {
         const targetId = this.getAttribute("data-target");
         const input = document.getElementById(targetId);
         if (input.type === "password") {
@@ -271,7 +275,7 @@ export default class ProfilePage {
     if (profilePic) {
       profilePicView.src = profilePic;
     } else {
-      profilePicView.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(name || "User");
+      profilePicView.src = "images/profile/puffin.jpg";
     }
     this.#profileData = { name, email, profilePic };
   }
@@ -283,7 +287,7 @@ export default class ProfilePage {
     if (this.#profileData?.profilePic) {
       profilePicPreview.src = this.#profileData.profilePic;
     } else {
-      profilePicPreview.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(this.#profileData?.name || "User");
+      profilePicPreview.src = "images/profile/puffin.jpg";
     }
   }
 
@@ -295,15 +299,29 @@ export default class ProfilePage {
   }
 
   showLoading() {
+    const loadingIndicator = document.querySelector("#loading-indicator");
+    loadingIndicator.classList.remove("hidden");
+    loadingIndicator.classList.add("flex");
+  }
+  hideLoading() {
+    const loadingIndicator = document.querySelector("#loading-indicator");
+    loadingIndicator.classList.add("hidden");
+    loadingIndicator.classList.remove("flex");
+  }
+
+  showLoadingSave() {
     const btn = document.getElementById("profile-save-btn");
     if (btn) {
-      btn.innerHTML = `<span class="loader inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span> Saving...`;
+      btn.innerHTML = `
+        <span class="loader inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+        <span class="ml-2 text-white">Saving...</span>
+      Saving...`; 
       btn.setAttribute("disabled", true);
       btn.classList.add("cursor-wait");
     }
   }
 
-  hideLoading() {
+  hideLoadingSave() {
     const btn = document.getElementById("profile-save-btn");
     if (btn) {
       btn.innerHTML = `<i class="fas fa-save mr-2"></i> Save Changes`;
@@ -315,7 +333,10 @@ export default class ProfilePage {
   showLoadingPassword() {
     const btn = document.getElementById("password-save-btn");
     if (btn) {
-      btn.innerHTML = `<span class="loader inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span> Updating...`;
+      btn.innerHTML = `
+        <span class="loader inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+        <span class="ml-2 text-white">Updating...</span>
+        Updating...`;
       btn.setAttribute("disabled", true);
       btn.classList.add("cursor-wait");
     }
@@ -331,37 +352,46 @@ export default class ProfilePage {
   }
 
   showSuccess(message) {
-    const toast = document.createElement("div");
-    toast.className = "fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center animate-fade-in";
-    toast.innerHTML = `
-      <i class="fas fa-check-circle mr-2"></i>
-      <span>${message}</span>
-    `;
-    document.body.appendChild(toast);
-    setTimeout(() => {
-      toast.classList.replace("animate-fade-in", "animate-fade-out");
-      setTimeout(() => toast.remove(), 300);
-    }, 3000);
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "success",
+      title: message,
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      background: "#22c55e",
+      color: "#fff",
+      customClass: {
+        popup: "rounded-lg shadow-lg px-4 py-2",
+        title: "text-white",
+        icon: "text-white",
+      },
+    });
   }
 
   showError(message) {
-    const toast = document.createElement("div");
-    toast.className = "fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center animate-fade-in";
-    toast.innerHTML = `
-      <i class="fas fa-exclamation-circle mr-2"></i>
-      <span>Error: ${message}</span>
-    `;
-    document.body.appendChild(toast);
-    setTimeout(() => {
-      toast.classList.replace("animate-fade-in", "animate-fade-out");
-      setTimeout(() => toast.remove(), 300);
-    }, 3000);
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "error",
+      title: message,
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      background: "#ef4444",
+      color: "#fff",
+      customClass: {
+        popup: "rounded-lg shadow-lg px-4 py-2",
+        title: "text-white",
+        icon: "text-white",
+      },
+    });
   }
 
   accountDeleted() {
     this.showSuccess("Account deleted successfully.");
-    setTimeout(() => {
-      window.location.hash = "/login";
-    }, 1500);
+    removeAccessToken();
+    location.hash = "/login";
   }
 }
