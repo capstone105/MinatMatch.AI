@@ -14,10 +14,10 @@ export default class ProfilePage {
                 <div class="flex flex-col items-center">
                   <!-- Header Section -->
                   <div class="text-center mb-12">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center" tabindex="0" id="profile-main-heading" aria-label="My Profile" role="heading" aria-level="1">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center" tabindex="0" id="profile-main-heading">
                       My Profile
                     </h1>
-                    <p class="text-gray-600 text-sm sm:text-base max-w-md mx-auto" tabindex="0" aria-label="Manage your account section">
+                    <p class="text-gray-600 text-sm sm:text-base max-w-md mx-auto" tabindex="0">
                     Manage Your Account
                     </p>
                   </div>
@@ -30,10 +30,10 @@ export default class ProfilePage {
                   <div class="absolute inset-0 bg-black/10"></div>
                   <div class="relative z-10">
                     <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/30 overflow-hidden">
-                      <img id="profile-pic-view" src="images/profile/puffin.jpg" alt="Profile Picture" class="w-full h-full object-cover rounded-full" />
+                      <img id="profile-pic-view" src="images/profile/puffin.jpg" alt="Profile picture" class="w-full h-full object-cover rounded-full" />
                     </div>
-                    <h2 id="profile-name-view" class="text-2xl font-bold text-white mb-2" tabindex="0" aria-label="Username"></h2>
-                    <div id="profile-email-view" class="flex items-center justify-center text-white/90" tabindex="0" aria-label="Email address">
+                    <h2 id="profile-name-view" class="text-2xl font-bold text-white mb-2" tabindex="0"></h2>
+                    <div id="profile-email-view" class="flex items-center justify-center text-white/90" tabindex="0">
                       <i class="fas fa-envelope mr-2"></i>
                       <span class="text-sm font-medium"></span>
                     </div>
@@ -65,7 +65,7 @@ export default class ProfilePage {
             <!-- Edit Profile Modal -->
             <div id="edit-profile-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm items-center justify-center z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="edit-profile-title" tabindex="-1">
               <div class="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 w-full max-w-md mx-4 relative border border-white/20 animate-in slide-in-from-bottom-4 duration-300">
-                <button id="close-edit-profile" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-all duration-200">
+                <button id="close-edit-profile" aria-label="Close edit profile modal" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-all duration-200">
                   <i class="fas fa-times text-lg"></i>
                 </button>
                 
@@ -81,7 +81,7 @@ export default class ProfilePage {
                   <!-- Profile Picture Section -->
                   <div class="flex flex-col items-center mb-6">
                     <div class="relative mb-4">
-                      <img id="profile-pic-preview" src="images/profile/puffin.jpg" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover border-4 border-blue-100 shadow-lg" />
+                      <img id="profile-pic-preview" src="images/profile/puffin.jpg" alt="Profile picture preview" class="w-24 h-24 rounded-full object-cover border-4 border-blue-100 shadow-lg" />
                       <div class="absolute -bottom-2 -right-2 bg-blue-500 hover:bg-blue-600 rounded-full p-2 cursor-pointer transition-colors shadow-lg">
                         <label for="profilePic" class="cursor-pointer">
                           <i class="fas fa-camera text-white text-sm"></i>
@@ -145,7 +145,7 @@ export default class ProfilePage {
             <!-- Change Password Modal -->
             <div id="change-password-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm items-center justify-center z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="change-password-title" tabindex="-1">
               <div class="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 w-full max-w-md mx-4 relative border border-white/20 animate-in slide-in-from-bottom-4 duration-300">
-                <button id="close-change-password" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-all duration-200">
+                <button id="close-change-password" aria-label="Close change password modal" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-all duration-200">
                   <i class="fas fa-times text-lg"></i>
                 </button>
                 
