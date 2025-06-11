@@ -13,7 +13,7 @@ export default class AddPage {
       <div class="container mx-auto px-4 py-8 sm:py-12">
         <!-- Header Section -->
         <div class="text-center mb-8 sm:mb-12">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4" tabindex="0">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center">
             Add Your Data
           </h1>
           <p class="text-gray-600 text-sm sm:text-base max-w-md mx-auto">

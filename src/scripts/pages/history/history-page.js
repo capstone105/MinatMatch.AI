@@ -12,7 +12,7 @@ export default class HistoryPage {
         <div class="flex flex-col items-center">
           <!-- Header Section -->
           <div class="text-center mb-12">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4" tabindex="0">
+           <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center">
               Career History
             </h1>
             <p class="text-gray-600 text-sm sm:text-base max-w-md mx-auto">
@@ -51,10 +51,10 @@ export default class HistoryPage {
           <h2 class="text-2xl font-bold text-gray-800">Recommendation History</h2>
         </div>
        <button id="delete-history-button"
-  class="group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold px-4 py-2 sm:py-3 sm:px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center text-sm sm:text-base whitespace-nowrap">
-  <i class="fas fa-trash mr-1 sm:mr-2 group-hover:scale-110 transition-transform"></i>
-  <span>Delete All</span>
-</button>
+        class="mt-4 sm:mt-0 group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold px-4 py-2 sm:py-3 sm:px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center text-sm sm:text-base whitespace-nowrap">
+        <i class="fas fa-trash mr-1 sm:mr-2 group-hover:scale-110 transition-transform"></i>
+        <span>Delete All</span>
+      </button>
 
       </div>
 
