@@ -6,7 +6,7 @@ export default class HistoryPage {
   #presenter;
 
   async render() {
-  return `
+    return `
     <section class="min-h-screen via-white to-indigo-50 pt-24">
       <div class="container mx-auto px-4 py-8 sm:py-12">
         <div class="flex flex-col items-center">
@@ -38,8 +38,7 @@ export default class HistoryPage {
       </div>
     </section>
   `;
-}
-
+  }
 
   async afterRender() {
     const historyContainer = document.querySelector("#history-container");
@@ -78,12 +77,12 @@ export default class HistoryPage {
     });
   }
 
-displayHistory(data) {
-  const historyList = document.getElementById("history-list");
-  historyList.innerHTML = "";
+  displayHistory(data) {
+    const historyList = document.getElementById("history-list");
+    historyList.innerHTML = "";
 
-  if (!Array.isArray(data) || data.length === 0) {
-    historyList.innerHTML = `
+    if (!Array.isArray(data) || data.length === 0) {
+      historyList.innerHTML = `
       <div class="text-center py-16">
         <div class="inline-flex items-center justify-center w-24 h-24 bg-gray-100 rounded-full mb-6">
           <i class="fas fa-history text-4xl text-gray-400"></i>
@@ -94,29 +93,27 @@ displayHistory(data) {
         </p>
       </div>
     `;
-    return;
-  }
+      return;
+    }
 
-  data.forEach((item, index) => {
-    const wrapper = document.createElement("article");
-    wrapper.className = `group bg-white/70 backdrop-blur-sm border border-white/20 shadow-xl rounded-2xl p-4 sm:p-6 md:p-8 relative hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-purple-300`;
-    wrapper.setAttribute("tabindex", "0");
-    wrapper.setAttribute("role", "region");
+    data.forEach((item, index) => {
+      const wrapper = document.createElement("article");
+      wrapper.className = `group bg-white/70 backdrop-blur-sm border border-white/20 shadow-xl rounded-2xl p-4 sm:p-6 md:p-8 relative hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-purple-300`;
+      wrapper.setAttribute("tabindex", "0");
+      wrapper.setAttribute("role", "region");
 
-    const date = new Date(item.createdAt);
-    const formattedDate = date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
+      const date = new Date(item.createdAt);
+      const formattedDate = date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
 
-    const topPrediction = item.predictions.reduce((max, pred) =>
-      pred.probability > max.probability ? pred : max
-    );
+      const topPrediction = item.predictions.reduce((max, pred) => (pred.probability > max.probability ? pred : max));
 
-    wrapper.innerHTML = `
+      wrapper.innerHTML = `
       <!-- Header -->
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-3 sm:space-y-0">
         <div class="flex items-center space-x-4">
@@ -139,7 +136,10 @@ displayHistory(data) {
       </div>
 
       <!-- Top Recommendation -->
-      <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-4 sm:p-6 mb-6 border border-purple-100">
+      <section class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-4 sm:p-6 mb-6 border border-purple-100" role="region" aria-labelledby="top-recommendation-label-${
+        item._id
+      }">
+        <span id="top-recommendation-label-${item._id}" class="sr-only">Top Recommendation</span>
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
           <div>
             <p class="text-xs sm:text-sm font-semibold text-purple-600 uppercase mb-1">Top Recommendation</p>
@@ -151,7 +151,7 @@ displayHistory(data) {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- All Predictions -->
       <div class="space-y-3" aria-label="All prediction results">
@@ -160,50 +160,54 @@ displayHistory(data) {
           All Predictions
         </h5>
         <div class="grid gap-3">
-          ${item.predictions.map((pred, predIndex) => {
-            const percentage = (pred.probability * 100).toFixed(1);
-            const isTop = pred === topPrediction;
-            return `
+          ${item.predictions
+            .map((pred, predIndex) => {
+              const percentage = (pred.probability * 100).toFixed(1);
+              const isTop = pred === topPrediction;
+              return `
               <div class="flex flex-wrap sm:flex-nowrap items-center justify-between p-3 sm:p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors" tabindex="0">
                 <div class="flex items-center space-x-3 mb-2 sm:mb-0">
-                  <div class="w-7 h-7 ${isTop ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white' : 'bg-gray-200 text-gray-600'} rounded-md flex items-center justify-center text-xs font-bold">
+                  <div class="w-7 h-7 ${
+                    isTop ? "bg-gradient-to-r from-purple-500 to-indigo-500 text-white" : "bg-gray-200 text-gray-600"
+                  } rounded-md flex items-center justify-center text-xs font-bold">
                     ${predIndex + 1}
                   </div>
                   <span class="font-medium text-gray-800 text-sm sm:text-base">${pred.career}</span>
                 </div>
                 <div class="flex items-center space-x-2 w-full sm:w-auto">
                   <div class="flex-1 sm:w-24 bg-gray-200 rounded-full h-2 overflow-hidden">
-                    <div class="h-full ${isTop ? 'bg-gradient-to-r from-purple-500 to-indigo-500' : 'bg-gray-400'} rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
+                    <div class="h-full ${
+                      isTop ? "bg-gradient-to-r from-purple-500 to-indigo-500" : "bg-gray-400"
+                    } rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
                   </div>
                   <span class="font-bold text-gray-700 text-sm sm:text-base min-w-[48px] text-right">${percentage}%</span>
                 </div>
               </div>
             `;
-          }).join("")}
+            })
+            .join("")}
         </div>
       </div>
     `;
 
-    historyList.appendChild(wrapper);
-  });
-
-
-  historyList.querySelectorAll(".delete-history-item-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const id = btn.getAttribute("data-id");
-      this.#presenter.deleteHistoryById(id);
+      historyList.appendChild(wrapper);
     });
-    btn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
+
+    historyList.querySelectorAll(".delete-history-item-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        btn.click();
-      }
+        const id = btn.getAttribute("data-id");
+        this.#presenter.deleteHistoryById(id);
+      });
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          e.stopPropagation();
+          btn.click();
+        }
+      });
     });
-  });
-}
-
+  }
 
   showLoading() {
     const loadingIndicator = document.querySelector("#loading-indicator");
