@@ -14,17 +14,17 @@ export default class ProfilePage {
                 <div class="flex flex-col items-center">
                   <!-- Header Section -->
                   <div class="text-center mb-12">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center" tabindex="0" id="profile-main-heading" aria-label="My Profile" role="heading" aria-level="1">
                       My Profile
                     </h1>
-                    <p class="text-gray-600 text-sm sm:text-base max-w-md mx-auto">
+                    <p class="text-gray-600 text-sm sm:text-base max-w-md mx-auto" tabindex="0" aria-label="Manage your account section">
                     Manage Your Account
                     </p>
                   </div>
 
             <!-- Main Profile Card -->
             <div class="w-full max-w-md">
-              <div id="profile-view" class="bg-white/70 backdrop-blur-sm border border-white/20 shadow-xl rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+              <div id="profile-view" class="bg-white/70 backdrop-blur-sm border border-white/20 shadow-xl rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300" role="region" aria-labelledby="profile-main-heading">
                 <!-- Header Section -->
                 <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 p-8 text-center relative">
                   <div class="absolute inset-0 bg-black/10"></div>
@@ -32,8 +32,8 @@ export default class ProfilePage {
                     <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/30 overflow-hidden">
                       <img id="profile-pic-view" src="images/profile/puffin.jpg" alt="Profile Picture" class="w-full h-full object-cover rounded-full" />
                     </div>
-                    <h2 id="profile-name-view" class="text-2xl font-bold text-white mb-2"></h2>
-                    <div id="profile-email-view" class="flex items-center justify-center text-white/90">
+                    <h2 id="profile-name-view" class="text-2xl font-bold text-white mb-2" tabindex="0" aria-label="Username"></h2>
+                    <div id="profile-email-view" class="flex items-center justify-center text-white/90" tabindex="0" aria-label="Email address">
                       <i class="fas fa-envelope mr-2"></i>
                       <span class="text-sm font-medium"></span>
                     </div>
