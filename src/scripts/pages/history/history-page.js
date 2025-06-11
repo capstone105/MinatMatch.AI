@@ -12,10 +12,10 @@ export default class HistoryPage {
         <div class="flex flex-col items-center">
           <!-- Header Section -->
           <div class="text-center mb-12">
-           <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center">
+           <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center" id="history-heading" tabindex="0">
               Career History
             </h1>
-            <p class="text-gray-600 text-sm sm:text-base max-w-md mx-auto">
+            <p class="text-gray-600 text-sm sm:text-base max-w-md mx-auto" id="history-desc">
               Track your career recommendation journey and review past predictions
             </p>
           </div>
@@ -48,15 +48,15 @@ export default class HistoryPage {
       <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
         <div class="flex items-center space-x-3">
           <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full"></div>
-          <h2 class="text-2xl font-bold text-gray-800">Recommendation History</h2>
+          <h2 class="text-2xl font-bold text-gray-800" id="recommendation-history-heading">
+            Recommendation History
+          </h2>
         </div>
-      <button id="delete-history-button"
-  class="w-full sm:w-auto group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold px-4 py-2 sm:py-3 sm:px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center text-sm sm:text-base whitespace-nowrap">
-  <i class="fas fa-trash mr-2 group-hover:scale-110 transition-transform"></i>
-  <span>Delete All</span>
-</button>
-
-
+        <button id="delete-history-button"
+          class="w-full sm:w-auto group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold px-4 py-2 sm:py-3 sm:px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center text-sm sm:text-base whitespace-nowrap">
+          <i class="fas fa-trash mr-2 group-hover:scale-110 transition-transform"></i>
+          <span>Delete All</span>
+        </button>
       </div>
 
       <!-- History List -->
@@ -88,7 +88,7 @@ displayHistory(data) {
         <div class="inline-flex items-center justify-center w-24 h-24 bg-gray-100 rounded-full mb-6">
           <i class="fas fa-history text-4xl text-gray-400"></i>
         </div>
-        <h3 class="text-2xl font-bold text-gray-700 mb-4">No History Yet</h3>
+        <h3 class="text-2xl font-bold text-gray-700 mb-4" id="no-history-heading">No History Yet</h3>
         <p class="text-gray-500 text-lg max-w-md mx-auto">
           Your career recommendation history will appear here once you start using the prediction feature.
         </p>
@@ -155,7 +155,7 @@ displayHistory(data) {
 
       <!-- All Predictions -->
       <div class="space-y-3" aria-label="All prediction results">
-        <h5 class="text-base sm:text-lg font-semibold text-gray-700 mb-3 flex items-center">
+        <h5 class="text-base sm:text-lg font-semibold text-gray-700 mb-3 flex items-center" aria-label="All Predictions">
           <i class="fas fa-chart-bar mr-2 text-purple-500"></i>
           All Predictions
         </h5>
@@ -224,7 +224,7 @@ displayHistory(data) {
         <div class="inline-flex items-center justify-center w-24 h-24 bg-red-100 rounded-full mb-6">
           <i class="fas fa-exclamation-triangle text-4xl text-red-500"></i>
         </div>
-        <h3 class="text-2xl font-bold text-red-700 mb-4">Error Loading History</h3>
+        <h3 class="text-2xl font-bold text-red-700 mb-4" id="error-history-heading">Error Loading History</h3>
         <p class="text-red-500 text-lg max-w-md mx-auto">${message}</p>
         <button onclick="location.reload()" class="mt-6 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
           <i class="fas fa-refresh mr-2"></i>
@@ -241,7 +241,7 @@ displayHistory(data) {
         <div class="inline-flex items-center justify-center w-24 h-24 bg-green-100 rounded-full mb-6">
           <i class="fas fa-check-circle text-4xl text-green-500"></i>
         </div>
-        <h3 class="text-2xl font-bold text-green-700 mb-4">History Cleared</h3>
+        <h3 class="text-2xl font-bold text-green-700 mb-4" id="cleared-history-heading">History Cleared</h3>
         <p class="text-green-600 text-lg max-w-md mx-auto">
           Your recommendation history has been successfully deleted.
         </p>
