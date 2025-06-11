@@ -34,9 +34,9 @@ export default class AddPage {
                   <div class="space-y-2">
                     <label class="block text-sm font-semibold text-gray-700" for="name">
                       <span class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span aria-hidden="true"><svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                        </svg>
+                        </svg></span>
                         Full Name
                       </span>
                     </label>
@@ -57,9 +57,9 @@ export default class AddPage {
                   <div class="space-y-2">
                     <label class="block text-sm font-semibold text-gray-700" for="gender">
                       <span class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span aria-hidden="true"><svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
-                        </svg>
+                        </svg></span>
                         Gender
                       </span>
                     </label>
@@ -82,9 +82,9 @@ export default class AddPage {
                   <div class="space-y-2">
                     <label class="block text-sm font-semibold text-gray-700" for="age">
                       <span class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span aria-hidden="true"><svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
+                        </svg></span>
                         Age
                       </span>
                     </label>
@@ -107,9 +107,9 @@ export default class AddPage {
                   <div class="space-y-2">
                     <label class="block text-sm font-semibold text-gray-700" for="gpa">
                       <span class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span aria-hidden="true"><svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
+                        </svg></span>
                         GPA
                       </span>
                     </label>
@@ -133,9 +133,9 @@ export default class AddPage {
                   <div class="space-y-2 md:col-span-2">
                     <label class="block text-sm font-semibold text-gray-700" for="interestedDomain">
                       <span class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span aria-hidden="true"><svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                        </svg>
+                        </svg></span>
                         Interested Domain
                       </span>
                     </label>
@@ -148,11 +148,11 @@ export default class AddPage {
                       aria-label="Interested Domain select"
                     >
                       <option value="" disabled selected>Select your field of interest</option>
-                      <option value="Artificial Intelligence">🤖 Artificial Intelligence</option>
-                      <option value="Web Development">🌐 Web Development</option>
-                      <option value="Data Science">📊 Data Science</option>
-                      <option value="Cybersecurity">🔒 Cybersecurity</option>
-                      <option value="Software Development">💻 Software Development</option>
+                      <option value="Artificial Intelligence"><span aria-hidden="true">🤖</span> Artificial Intelligence</option>
+                      <option value="Web Development"><span aria-hidden="true">🌐</span> Web Development</option>
+                      <option value="Data Science"><span aria-hidden="true">📊</span> Data Science</option>
+                      <option value="Cybersecurity"><span aria-hidden="true">🔒</span> Cybersecurity</option>
+                      <option value="Software Development"><span aria-hidden="true">💻</span> Software Development</option>
                     </select>
                     <p id="interestedDomain-error" class="text-red-500 text-xs mt-1 min-h-[16px]" role="alert" aria-live="polite"></p>
                   </div>
@@ -161,9 +161,9 @@ export default class AddPage {
                   <div class="space-y-2 md:col-span-2">
                     <label class="block text-sm font-semibold text-gray-700" for="projects">
                       <span class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span aria-hidden="true"><svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                        </svg>
+                        </svg></span>
                         Project Experience
                       </span>
                     </label>
@@ -176,11 +176,11 @@ export default class AddPage {
                       aria-label="Project select"
                     >
                       <option value="" disabled selected>Select your project type</option>
-                      <option value="Chatbot Development">💬 Chatbot Development</option>
-                      <option value="Data Analytics">📈 Data Analytics</option>
-                      <option value="E-commerce Website">🛒 E-commerce Website</option>
-                      <option value="Full-Stack Web App">🔧 Full-Stack Web App</option>
-                      <option value="Network Security">🛡️ Network Security</option>
+                      <option value="Chatbot Development"><span aria-hidden="true">💬</span> Chatbot Development</option>
+                      <option value="Data Analytics"><span aria-hidden="true">📈</span> Data Analytics</option>
+                      <option value="E-commerce Website"><span aria-hidden="true">🛒</span> E-commerce Website</option>
+                      <option value="Full-Stack Web App"><span aria-hidden="true">🔧</span> Full-Stack Web App</option>
+                      <option value="Network Security"><span aria-hidden="true">🛡️</span> Network Security</option>
                     </select>
                     <p id="projects-error" class="text-red-500 text-xs mt-1 min-h-[16px]" role="alert" aria-live="polite"></p>
                   </div>
@@ -200,7 +200,7 @@ export default class AddPage {
                     <div class="space-y-2">
                       <label class="block text-sm font-semibold text-gray-700" for="datascience">
                         <span class="flex items-center gap-2">
-                          <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                          <span class="w-2 h-2 bg-blue-500 rounded-full" aria-hidden="true"></span>
                           Data Science
                         </span>
                       </label>
@@ -213,9 +213,9 @@ export default class AddPage {
                         aria-label="Interest in Data Science select"
                       >
                         <option value="" disabled selected>Select level</option>
-                        <option value="Weak">⭐ Weak</option>
-                        <option value="Average">⭐⭐ Average</option>
-                        <option value="Strong">⭐⭐⭐ Strong</option>
+                        <option value="Weak"><span aria-hidden="true">⭐</span> Weak</option>
+                        <option value="Average"><span aria-hidden="true">⭐⭐</span> Average</option>
+                        <option value="Strong"><span aria-hidden="true">⭐⭐⭐</span> Strong</option>
                       </select>
                       <p id="datascience-error" class="text-red-500 text-xs mt-1 min-h-[16px]" role="alert" aria-live="polite"></p>
                     </div>
@@ -224,7 +224,7 @@ export default class AddPage {
                     <div class="space-y-2">
                       <label class="block text-sm font-semibold text-gray-700" for="database">
                         <span class="flex items-center gap-2">
-                          <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                          <span class="w-2 h-2 bg-green-500 rounded-full" aria-hidden="true"></span>
                           Database
                         </span>
                       </label>
@@ -237,9 +237,9 @@ export default class AddPage {
                         aria-label="Interest in Database select"
                       >
                         <option value="" disabled selected>Select level</option>
-                        <option value="Weak">⭐ Weak</option>
-                        <option value="Average">⭐⭐ Average</option>
-                        <option value="Strong">⭐⭐⭐ Strong</option>
+                        <option value="Weak"><span aria-hidden="true">⭐</span> Weak</option>
+                        <option value="Average"><span aria-hidden="true">⭐⭐</span> Average</option>
+                        <option value="Strong"><span aria-hidden="true">⭐⭐⭐</span> Strong</option>
                       </select>
                       <p id="database-error" class="text-red-500 text-xs mt-1 min-h-[16px]" role="alert" aria-live="polite"></p>
                     </div>
@@ -248,7 +248,7 @@ export default class AddPage {
                     <div class="space-y-2">
                       <label class="block text-sm font-semibold text-gray-700" for="programming">
                         <span class="flex items-center gap-2">
-                          <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                          <span class="w-2 h-2 bg-purple-500 rounded-full" aria-hidden="true"></span>
                           Programming
                         </span>
                       </label>
@@ -261,9 +261,9 @@ export default class AddPage {
                         aria-label="Interest in Programming select"
                       >
                         <option value="" disabled selected>Select level</option>
-                        <option value="Weak">⭐ Weak</option>
-                        <option value="Average">⭐⭐ Average</option>
-                        <option value="Strong">⭐⭐⭐ Strong</option>
+                        <option value="Weak"><span aria-hidden="true">⭐</span> Weak</option>
+                        <option value="Average"><span aria-hidden="true">⭐⭐</span> Average</option>
+                        <option value="Strong"><span aria-hidden="true">⭐⭐⭐</span> Strong</option>
                       </select>
                       <p id="programming-error" class="text-red-500 text-xs mt-1 min-h-[16px]" role="alert" aria-live="polite"></p>
                     </div>
@@ -580,7 +580,7 @@ export default class AddPage {
              aria-label="${prediction.career} with recommendation probability ${percentage} percent">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 ${color.iconBg} rounded-full flex items-center justify-center">
-              <span class="text-lg">${icon}</span>
+              <span class="text-lg" aria-hidden="true">${icon}</span>
             </div>
             <div>
               <h3 class="font-semibold ${color.text} text-sm sm:text-base">${prediction.career}</h3>
