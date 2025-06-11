@@ -29,8 +29,8 @@ export default class ProfilePage {
                 <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 p-8 text-center relative">
                   <div class="absolute inset-0 bg-black/10"></div>
                   <div class="relative z-10">
-                    <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/30">
-                      <i class="fas fa-user text-4xl text-white"></i>
+                    <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/30 overflow-hidden">
+                      <img id="profile-pic-view" src="images/profile/puffin.jpg" alt="Profile Picture" class="w-full h-full object-cover rounded-full" />
                     </div>
                     <h2 id="profile-name-view" class="text-2xl font-bold text-white mb-2"></h2>
                     <div id="profile-email-view" class="flex items-center justify-center text-white/90">
@@ -78,6 +78,20 @@ export default class ProfilePage {
                 </div>
 
                 <form id="profile-form" class="space-y-6">
+                  <!-- Profile Picture Section -->
+                  <div class="flex flex-col items-center mb-6">
+                    <div class="relative mb-4">
+                      <img id="profile-pic-preview" src="images/profile/puffin.jpg" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover border-4 border-blue-100 shadow-lg" />
+                      <div class="absolute -bottom-2 -right-2 bg-blue-500 hover:bg-blue-600 rounded-full p-2 cursor-pointer transition-colors shadow-lg">
+                        <label for="profilePic" class="cursor-pointer">
+                          <i class="fas fa-camera text-white text-sm"></i>
+                          <input type="file" id="profilePic" accept="image/*" class="hidden" />
+                        </label>
+                      </div>
+                    </div>
+                    <p class="text-sm text-gray-500 text-center">Click camera icon to change photo<br>Max file size: 2MB</p>
+                  </div>
+
                   <div class="space-y-2">
                     <label class="block text-gray-700 text-sm font-semibold" for="name">
                       Username
@@ -237,6 +251,37 @@ export default class ProfilePage {
       }
     });
 
+    // Profile Picture Upload Handler
+    const profilePicInput = document.getElementById("profilePic");
+    const profilePicPreview = document.getElementById("profile-pic-preview");
+    profilePicInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        // Check file size (2MB limit)
+        if (file.size > 2 * 1024 * 1024) {
+          this.showError("Profile picture must be less than 2MB.");
+          profilePicInput.value = "";
+          profilePicPreview.src = this.#profileData?.profilePic || "images/profile/puffin.jpg";
+          return;
+        }
+        
+        // Check file type
+        const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+        if (!allowedTypes.includes(file.type)) {
+          this.showError("Please select a valid image file (JPEG, PNG, or GIF).");
+          profilePicInput.value = "";
+          profilePicPreview.src = this.#profileData?.profilePic || "images/profile/puffin.jpg";
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          profilePicPreview.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
     document.querySelectorAll(".toggle-password").forEach((icon) => {
       icon.addEventListener("click", function () {
         const targetId = this.getAttribute("data-target");
@@ -266,7 +311,11 @@ export default class ProfilePage {
         valid = false;
       }
       if (!valid) return;
-      await this.#presenter.saveProfile({ name, email, profilePic: null });
+      
+      // Include profile picture file
+      const profilePic = profilePicInput.files[0] || null;
+      await this.#presenter.saveProfile({ name, email, profilePic });
+      
       const modal = document.getElementById("edit-profile-modal");
       if (modal) {
         modal.classList.add("hidden");
@@ -321,12 +370,30 @@ export default class ProfilePage {
   showProfile({ name, email, profilePic }) {
     document.getElementById("profile-name-view").textContent = name || "";
     document.getElementById("profile-email-view").querySelector("span").textContent = email || "";
+    
+    // Update profile picture
+    const profilePicView = document.getElementById("profile-pic-view");
+    if (profilePic) {
+      profilePicView.src = profilePic;
+    } else {
+      profilePicView.src = "images/profile/puffin.jpg";
+    }
+    
     this.#profileData = { name, email, profilePic };
   }
 
   showEditProfileModal() {
     document.getElementById("name").value = this.#profileData?.name || "";
     document.getElementById("email").value = this.#profileData?.email || "";
+    
+    // Set profile picture preview
+    const profilePicPreview = document.getElementById("profile-pic-preview");
+    if (this.#profileData?.profilePic) {
+      profilePicPreview.src = this.#profileData.profilePic;
+    } else {
+      profilePicPreview.src = "images/profile/puffin.jpg";
+    }
+    
     setTimeout(() => {
       const nameInput = document.getElementById("name");
       if (nameInput) nameInput.focus();

@@ -45,16 +45,17 @@ export default class HistoryPage {
     const historyContainer = document.querySelector("#history-container");
     historyContainer.innerHTML = `
       <!-- Header Actions -->
-      <div class="flex justify-between items-center mb-8">
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
         <div class="flex items-center space-x-3">
           <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full"></div>
           <h2 class="text-2xl font-bold text-gray-800">Recommendation History</h2>
         </div>
-       <button id="delete-history-button"
-        class="group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold px-4 py-2 sm:py-3 sm:px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center text-sm sm:text-base whitespace-nowrap">
-        <i class="fas fa-trash mr-1 sm:mr-2 group-hover:scale-110 transition-transform"></i>
-        <span>Delete All</span>
-      </button>
+      <button id="delete-history-button"
+  class="w-full sm:w-auto group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold px-4 py-2 sm:py-3 sm:px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center text-sm sm:text-base whitespace-nowrap">
+  <i class="fas fa-trash mr-2 group-hover:scale-110 transition-transform"></i>
+  <span>Delete All</span>
+</button>
+
 
       </div>
 
