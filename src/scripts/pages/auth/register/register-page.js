@@ -194,7 +194,7 @@ export default class RegisterPage {
 
   hideLoading() {
     const button = document.querySelector("#register-button-form");
-    button.innerHTML = "Login";
+    button.innerHTML = "Register";
     button.removeAttribute("disabled");
     button.classList.remove("cursor-wait");
   }

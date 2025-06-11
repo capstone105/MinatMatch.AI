@@ -18,7 +18,7 @@ export function generateLoggedOutTemplate() {
     <div class="flex flex-col gap-4 lg:flex-row lg:gap-14 items-center">
       <ul id="nav-list" class="flex flex-col gap-1 lg:flex-row items-center" role="menubar">
         <li role="none"><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/" role="menuitem" aria-label="Go to Home page">Home</a></li>
-        <li role="none"><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/about" role="menuitem" aria-label="Go to About Us page">About Us</a></li>
+        <li role="none"><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/about" role="menuitem" aria-label="Go to About page">About</a></li>
         <li role="none"><a class="block px-4 py-2 text-gray-800 font-bold hover:text-primary active:text-[#4834D4]" href="#/features" role="menuitem" aria-label="Go to Features page">Features</a></li>
       </ul>
       <div id="auth-controls" class="flex flex-col gap-4 lg:flex-row items-center">

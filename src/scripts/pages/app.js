@@ -50,7 +50,7 @@ class App {
       logoutButton.addEventListener("click", (event) => {
         event.preventDefault();
 
-        if (confirm("Apakah Anda yakin ingin keluar?")) {
+        if (confirm("Are you sure you want to logout?")) {
           logout();
 
           location.hash = "/login";

@@ -1,15 +1,90 @@
 # MinatMatch.AI 🚀  
-**Platform Rekomendasi Karier Berbasis AI untuk Mahasiswa Indonesia**  
+**AI-Powered Career Recommendation Progressive Web App**
 
-[![Status Proyek](https://img.shields.io/badge/status-in%20development-orange)](https://github.com/capstone105/MinatMatch.AI)  
-[![Demo](https://img.shields.io/badge/demo-available-green)](https://capstone105.github.io/MinatMatch.AI/)  
+[![Project Status](https://img.shields.io/badge/status-complete-brightgreen)](https://minat-match-ai.vercel.app)  
+[![PWA Ready](https://img.shields.io/badge/PWA-optimized-blue)](https://web.dev/progressive-web-apps/)  
 
-## 📝 Deskripsi  
-MinatMatch.AI adalah platform berbasis kecerdasan buatan yang membantu mahasiswa dan calon lulusan di Indonesia menentukan jalur karier optimal berdasarkan:  
-- **Latar belakang pendidikan**  
-- **Pengalaman kerja/magang**  
-- **Keterampilan teknis & soft skills**  
-- **Nilai akademik (GPA 0–4)**  
+## 🌟 Overview
+MinatMatch.AI is an artificial intelligence-based Progressive Web App (PWA) developed to help users discover optimal career paths through comprehensive analysis of their interests and background.
 
-## 🛠 Status Pengembangan  
-**⚠️ Sedang dalam Pengembangan**  
+## ✨ Core Features
+
+### 🎯 Career Recommendations
+- AI-powered career matching with probability scores
+- Analyzes:
+  - Academic performance (GPA 2.0–4.0)
+  - Project experience
+  - Interest levels (Data Science, Database, Programming)
+- Clear top 3 career suggestions
+
+### 👤 User Management
+- Secure authentication system
+- Profile customization with photo upload
+- Password change functionality
+- Account management
+
+### 📊 Career History
+- Track all past recommendations
+- Delete individual or all history items
+
+### ♿ Accessibility
+- Keyboard navigation
+- Screen reader optimized
+- ARIA landmarks and roles
+
+### 📱 PWA Features
+- Offline capabilities
+- Installable on devices
+- Fast loading with service workers
+- App-like experience
+
+## 🛠 Technical Implementation
+
+### MVP Architecture
+- **Model**: Handles data and business logic
+- **View**: UI components (pages)
+- **Presenter**: Mediates between Model and View
+
+### Frontend Stack
+- **Core**: JavaScript ES6+, HTML5, CSS3
+- **Styling**: Tailwind CSS
+- **Build**: Webpack
+- **UI**: Font Awesome, SweetAlert2
+- **PWA**: Workbox service workers
+
+## 🚀 Installation & Usage
+
+### Prerequisites
+- Node.js v16+
+- npm 8+
+
+### 1. Clone Repository
+```bash
+git clone https://github.com/capstone105/MinatMatch.AI.git
+cd MinatMatch.AI
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+### 3. Run Development Server
+```bash
+npm run start-dev
+```
+
+### 4. Build for Production
+```bash
+npm run build
+```
+
+### 5. Preview Production Build (Optional)
+```bash
+npm run serve
+```
+
+**Script Descriptions:**
+- `npm run start-dev`: Start the development server with hot reload
+- `npm run build`: Build the app for production (output in `dist/`)
+- `npm run serve`: Serve the production build locally using http-server
