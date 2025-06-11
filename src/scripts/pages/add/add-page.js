@@ -13,7 +13,7 @@ export default class AddPage {
       <div class="container mx-auto px-4 py-8 sm:py-12">
         <!-- Header Section -->
         <div class="text-center mb-8 sm:mb-12">
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-center" id="add-data-heading" tabindex="0" aria-label="Add Your Data" aria-level="1" role="heading">
             Add Your Data
           </h1>
           <p class="text-gray-600 text-sm sm:text-base max-w-md mx-auto">
@@ -25,7 +25,9 @@ export default class AddPage {
           <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
               <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4 sm:px-8 sm:py-6">
-                <h2 class="text-white text-lg sm:text-xl font-semibold">Personal Information</h2>
+                <h2 class="text-white text-lg sm:text-xl font-semibold" id="personal-info-heading" aria-label="Personal Information" aria-level="2" role="heading">
+                  Personal Information
+                </h2>
               </div>
               
               <form id="addForm" class="p-6 sm:p-8" aria-label="Add Data Form" role="form">
@@ -148,11 +150,11 @@ export default class AddPage {
                       aria-label="Interested Domain select"
                     >
                       <option value="" disabled selected>Select your field of interest</option>
-                      <option value="Artificial Intelligence"><span aria-hidden="true">🤖</span> Artificial Intelligence</option>
-                      <option value="Web Development"><span aria-hidden="true">🌐</span> Web Development</option>
-                      <option value="Data Science"><span aria-hidden="true">📊</span> Data Science</option>
-                      <option value="Cybersecurity"><span aria-hidden="true">🔒</span> Cybersecurity</option>
-                      <option value="Software Development"><span aria-hidden="true">💻</span> Software Development</option>
+                      <option value="Artificial Intelligence">Artificial Intelligence</option>
+                      <option value="Web Development">Web Development</option>
+                      <option value="Data Science">Data Science</option>
+                      <option value="Cybersecurity">Cybersecurity</option>
+                      <option value="Software Development">Software Development</option>
                     </select>
                     <p id="interestedDomain-error" class="text-red-500 text-xs mt-1 min-h-[16px]" role="alert" aria-live="polite"></p>
                   </div>
@@ -176,11 +178,11 @@ export default class AddPage {
                       aria-label="Project select"
                     >
                       <option value="" disabled selected>Select your project type</option>
-                      <option value="Chatbot Development"><span aria-hidden="true">💬</span> Chatbot Development</option>
-                      <option value="Data Analytics"><span aria-hidden="true">📈</span> Data Analytics</option>
-                      <option value="E-commerce Website"><span aria-hidden="true">🛒</span> E-commerce Website</option>
-                      <option value="Full-Stack Web App"><span aria-hidden="true">🔧</span> Full-Stack Web App</option>
-                      <option value="Network Security"><span aria-hidden="true">🛡️</span> Network Security</option>
+                      <option value="Chatbot Development">Chatbot Development</option>
+                      <option value="Data Analytics">Data Analytics</option>
+                      <option value="E-commerce Website">E-commerce Website</option>
+                      <option value="Full-Stack Web App">Full-Stack Web App</option>
+                      <option value="Network Security">Network Security</option>
                     </select>
                     <p id="projects-error" class="text-red-500 text-xs mt-1 min-h-[16px]" role="alert" aria-live="polite"></p>
                   </div>
@@ -188,7 +190,7 @@ export default class AddPage {
 
                 <!-- Interest Levels Section -->
                 <div class="mt-8">
-                  <h3 class="text-lg font-semibold text-gray-800 mb-6 flex items-center gap-2">
+                  <h3 class="text-lg font-semibold text-gray-800 mb-6 flex items-center gap-2" id="interest-levels-heading" aria-label="Interest Levels" aria-level="3" role="heading">
                     <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                     </svg>
@@ -213,9 +215,9 @@ export default class AddPage {
                         aria-label="Interest in Data Science select"
                       >
                         <option value="" disabled selected>Select level</option>
-                        <option value="Weak"><span aria-hidden="true">⭐</span> Weak</option>
-                        <option value="Average"><span aria-hidden="true">⭐⭐</span> Average</option>
-                        <option value="Strong"><span aria-hidden="true">⭐⭐⭐</span> Strong</option>
+                        <option value="Weak">Weak</option>
+                        <option value="Average">Average</option>
+                        <option value="Strong">Strong</option>
                       </select>
                       <p id="datascience-error" class="text-red-500 text-xs mt-1 min-h-[16px]" role="alert" aria-live="polite"></p>
                     </div>
@@ -237,9 +239,9 @@ export default class AddPage {
                         aria-label="Interest in Database select"
                       >
                         <option value="" disabled selected>Select level</option>
-                        <option value="Weak"><span aria-hidden="true">⭐</span> Weak</option>
-                        <option value="Average"><span aria-hidden="true">⭐⭐</span> Average</option>
-                        <option value="Strong"><span aria-hidden="true">⭐⭐⭐</span> Strong</option>
+                        <option value="Weak">Weak</option>
+                        <option value="Average">Average</option>
+                        <option value="Strong">Strong</option>
                       </select>
                       <p id="database-error" class="text-red-500 text-xs mt-1 min-h-[16px]" role="alert" aria-live="polite"></p>
                     </div>
@@ -261,9 +263,9 @@ export default class AddPage {
                         aria-label="Interest in Programming select"
                       >
                         <option value="" disabled selected>Select level</option>
-                        <option value="Weak"><span aria-hidden="true">⭐</span> Weak</option>
-                        <option value="Average"><span aria-hidden="true">⭐⭐</span> Average</option>
-                        <option value="Strong"><span aria-hidden="true">⭐⭐⭐</span> Strong</option>
+                        <option value="Weak">Weak</option>
+                        <option value="Average">Average</option>
+                        <option value="Strong">Strong</option>
                       </select>
                       <p id="programming-error" class="text-red-500 text-xs mt-1 min-h-[16px]" role="alert" aria-live="polite"></p>
                     </div>
@@ -296,7 +298,7 @@ export default class AddPage {
         <div id="result-container" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden overflow-y-auto">
           <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full my-8 relative animate-in zoom-in-95 duration-200">
             <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4 rounded-t-2xl relative">
-              <h2 class="text-white text-xl font-bold text-center pr-8" id="result-heading" tabindex="-1" aria-live="polite" role="status">
+              <h2 class="text-white text-xl font-bold text-center pr-8" id="result-heading" tabindex="-1" aria-live="polite" aria-label="Your Career Recommendations" aria-level="2" role="heading">
                 🎯 Your Career Recommendations
               </h2>
               <button 
