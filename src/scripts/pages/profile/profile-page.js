@@ -9,19 +9,18 @@ export default class ProfilePage {
 
   async render() {
     return `
-       <section class=" via-white to-indigo-50">
-        <div class="container mx-auto px-4 py-8">
-          <div class="flex flex-col items-center">
-            <!-- Header -->
-            <div class="w-full max-w-md text-center mb-8">
-              <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full mb-6 shadow-lg">
-                <i class="fas fa-user-circle text-3xl text-white"></i>
-              </div>
-              <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2" tabindex="0">
-                My Profile
-              </h1>
-              <p class="text-gray-600">Manage your account settings</p>
-            </div>
+             <section class="min-h-screen via-white to-indigo-50 pt-24">
+              <div class="container mx-auto px-4 py-8 sm:py-12">
+                <div class="flex flex-col items-center">
+                  <!-- Header Section -->
+                  <div class="text-center mb-12">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4" tabindex="0">
+                      My Profile
+                    </h1>
+                    <p class="text-gray-600 text-sm sm:text-base max-w-md mx-auto">
+                    Manage Your Account
+                    </p>
+                  </div>
 
             <!-- Main Profile Card -->
             <div class="w-full max-w-md">
