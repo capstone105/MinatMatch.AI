@@ -2,17 +2,23 @@
   "id": "/#/",
   "start_url": "/#/",
   "scope": "/",
-  "name": "MinatMatch.Ai App",
+  "name": "MinatMatch.AI",
   "short_name": "MinatMatch",
-  "description": "MinatMatch.AI adalah platform AI yang membantu mahasiswa menemukan jalur karier yang sesuai berdasarkan data akademik dan keterampilan mereka.",
+  "description": "MinatMatch.AI is an AI-powered Progressive Web App to help users discover optimal career paths through analysis of interests, academic performance, and project experience.",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#d97706",
   "icons": [
     {
       "src": "images/icons/icon.svg",
-      "type": "image/png",
+      "type": "image/svg+xml",
       "sizes": "176x176",
+      "purpose": "any"
+    },
+    {
+      "src": "favicon.png",
+      "type": "image/png",
+      "sizes": "52x52",
       "purpose": "any"
     }
   ],
@@ -25,9 +31,41 @@
     },
     {
       "src": "images/screenshots/app-02.png",
+      "sizes": "1919x1027",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "images/screenshots/app-03.png",
       "sizes": "412x912",
       "type": "image/png",
       "form_factor": "narrow"
+    },
+    {
+      "src": "images/screenshots/app-04.png",
+      "sizes": "412x912",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Add Data",
+      "short_name": "Add",
+      "description": "Add your profile data for recommendations",
+      "url": "/?source=pwa#/add"
+    },
+    {
+      "name": "View History",
+      "short_name": "History",
+      "description": "See your career recommendation history",
+      "url": "/?source=pwa#/history"
+    },
+    {
+      "name": "Profile",
+      "short_name": "Profile",
+      "description": "Manage your account and settings",
+      "url": "/?source=pwa#/profile"
     }
   ]
 }
