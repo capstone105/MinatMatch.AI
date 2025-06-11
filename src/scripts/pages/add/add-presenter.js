@@ -1,5 +1,3 @@
-import Swal from "sweetalert2";
-
 export default class AddPresenter {
   #view;
   #model;
