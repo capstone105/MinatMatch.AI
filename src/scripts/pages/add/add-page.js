@@ -679,16 +679,23 @@ export default class AddPage {
 
   getIconByCareer(career) {
     const icons = {
-      "Artificial Intelligence": "🤖",
-      "Web Development": "🌐",
-      "Data Science": "📊",
-      "Cybersecurity": "🔒",
-      "Software Development": "💻",
-      "Machine Learning": "🧠",
-      "Mobile Development": "📱",
-      "Cloud Computing": "☁️",
-      "DevOps": "⚙️",
-      "UI/UX Design": "🎨"
+      "Data Scientist": "📊",
+      "Software Engineer": "💻",
+      "AI Specialist": "🤖",
+      "Web Developer": "🌐",
+      "Database Admin": "🗄️",
+      "Cybersecurity Analyst": "🔒",
+      "Game Developer": "🎮",
+      "Network Engineer": "🌐",
+      "Cloud Engineer": "☁️",
+      "Mobile Developer": "📱",
+      "DevOps Engineer": "⚙️",
+      "System Analyst": "🧑‍💼",
+      "UI/UX Designer": "🎨",
+      "QA Engineer": "🧪",
+      "Product Manager": "📦",
+      "Business Analyst": "📈",
+      "Technical Writer": "📝"
     };
     return icons[career] || "💼";
   }
