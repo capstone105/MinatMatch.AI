@@ -79,15 +79,16 @@ export default class RegisterPage {
               <p id="password-error" class="text-red-500 text-sm mt-1" role="alert" aria-live="polite"></p>
             </div>
             <button
-              type="submit"
-              id="register-button-form"
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring w-full"
-            >
-              Register
-            </button>
+            type="submit"
+            id="login-button-form"
+            class="inline-block w-full py-2 rounded text-white text-center shadow-[0_4px_20px_rgba(93,52,241,0.5)] bg-gradient-to-r from-[#686DE0] to-[#4834D4] hover:opacity-90 transition font-bold"
+          >
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <span class="ml-1">Register</span>
+          </button>
           </form>
           <p class="p-3 text-sm md:text-base mt-5 text-center">
-            Already have an account? <a href="#/login" class="text-blue-500">Login</a>
+            Already have an account? <a href="#/login" class="text-[#4834D4]">Login</a>
           </p>
         </div>
       </section>

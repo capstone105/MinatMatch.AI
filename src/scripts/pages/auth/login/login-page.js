@@ -55,17 +55,19 @@ export default class LoginPage {
                 <i class="fa-solid fa-key"></i>
               </span>
             </div>
-            <button
-              type="submit"
-              id="login-button-form"
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring w-full"
-            >
-              <i class="fa-solid fa-right-to-bracket"></i>
-              <span class="ml-1">Login</span>
-            </button>
+           <button
+            type="submit"
+            id="login-button-form"
+            class="inline-block w-full py-2 rounded text-white text-center shadow-[0_4px_20px_rgba(93,52,241,0.5)] bg-gradient-to-r from-[#686DE0] to-[#4834D4] hover:opacity-90 transition font-bold"
+          >
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <span class="ml-1">Login</span>
+          </button>
+
           </form>
           <p class="p-3 text-sm md:text-base mt-4 text-center">
-            Don't have an account? <a href="#/register" class="text-blue-500">Register</a>
+            Don't have an account? <a href="#/register" class="text-[#4834D4]
+            ">Register</a>
           </p>
         </div>
       </section>

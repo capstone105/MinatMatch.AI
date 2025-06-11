@@ -1,18 +1,42 @@
 import HistoryPresenter from "./history-presenter.js";
 import * as MinatMatch from "../../data/api.js";
 import { getAccessToken } from "../../utils/auth";
+
 export default class HistoryPage {
   #presenter;
+
   async render() {
     return `
-      <section class="container mx-auto px-4">
-        <div class="p-5 flex flex-col items-center min-h-screen">
-          <h1 class="mt-24 md:mt-28 lg:mt-32 text-xl sm:text-2xl md:text-3xl font-extrabold mb-4 text-center" tabindex="0">
-            History of Career Recommendation 
-          </h1>
-          <div id="history-container" class="w-full max-w-3xl"></div>
-          <div id="loading-indicator" class="fixed inset-0 items-center justify-center bg-gray-100 bg-opacity-75 z-50 hidden">
-            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+      <section class=" via-white to-indigo-50">
+        <div class="container mx-auto px-4 py-8">
+          <div class="flex flex-col items-center">
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+              <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full mb-6 shadow-lg">
+                <i class="fas fa-history text-3xl text-white"></i>
+              </div>
+              <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4" tabindex="0">
+                Career History
+              </h1>
+              <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                Track your career recommendation journey and review past predictions
+              </p>
+            </div>
+
+            <!-- Main Content -->
+            <div id="history-container" class="w-full max-w-5xl bg-white rounded-3xl shadow-lg p-8">
+              <!-- Content will be loaded here -->
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="fixed inset-0 items-center justify-center bg-white/80 backdrop-blur-sm z-50 hidden">
+              <div class="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100">
+                <div class="flex flex-col items-center">
+                  <div class="animate-spin rounded-full h-16 w-16 border-4 border-purple-200 border-t-purple-600 mb-4"></div>
+                  <p class="text-gray-600 font-medium">Loading your history...</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -22,13 +46,23 @@ export default class HistoryPage {
   async afterRender() {
     const historyContainer = document.querySelector("#history-container");
     historyContainer.innerHTML = `
-        <div class="text-right mb-4">
-          <button id="delete-history-button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:ring">
-            <i class="fa-solid fa-trash"></i> Delete All
-          </button>
+      <!-- Header Actions -->
+      <div class="flex justify-between items-center mb-8">
+        <div class="flex items-center space-x-3">
+          <div class="w-3 h-3 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full"></div>
+          <h2 class="text-2xl font-bold text-gray-800">Recommendation History</h2>
         </div>
-        <div id="history-list" class="space-y-4"></div>
-      `;
+        <button id="delete-history-button" class="group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center">
+          <i class="fas fa-trash mr-2 group-hover:scale-110 transition-transform"></i>
+          <span>Delete All</span>
+        </button>
+      </div>
+
+      <!-- History List -->
+      <div id="history-list" class="space-y-6">
+        <!-- History items will be loaded here -->
+      </div>
+    `;
 
     this.#presenter = new HistoryPresenter({
       view: this,
@@ -48,39 +82,127 @@ export default class HistoryPage {
     historyList.innerHTML = "";
 
     if (!Array.isArray(data) || data.length === 0) {
-      historyList.innerHTML = '<p class="text-gray-500">No recommendation history yet</p>';
+      historyList.innerHTML = `
+        <div class="text-center py-16">
+          <div class="inline-flex items-center justify-center w-24 h-24 bg-gray-100 rounded-full mb-6">
+            <i class="fas fa-history text-4xl text-gray-400"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-700 mb-4">No History Yet</h3>
+          <p class="text-gray-500 text-lg max-w-md mx-auto">
+            Your career recommendation history will appear here once you start using the prediction feature.
+          </p>
+        </div>
+      `;
       return;
     }
 
-    data.forEach((item) => {
+    data.forEach((item, index) => {
       const wrapper = document.createElement("article");
-      wrapper.className = `bg-white shadow-md rounded-lg p-4 mb-4 relative focus:outline-none focus:ring-2 focus:ring-blue-400`;
+      wrapper.className = `group bg-white/70 backdrop-blur-sm border border-white/20 shadow-xl rounded-3xl p-8 relative hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-purple-300`;
       wrapper.setAttribute("tabindex", "0");
       wrapper.setAttribute("role", "region");
       wrapper.setAttribute("aria-label", `History item for ${item.name}, created at ${new Date(item.createdAt).toLocaleString()}`);
 
+     
+      const date = new Date(item.createdAt);
+      const formattedDate = date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+    
+      const topPrediction = item.predictions.reduce((max, pred) => 
+        pred.probability > max.probability ? pred : max
+      );
+
       wrapper.innerHTML = `
-    <h3 class="text-lg font-semibold mb-2" tabindex="0">${item.name}</h3>
-    <p class="text-gray-600 mb-2" tabindex="0">Date: ${new Date(item.createdAt).toLocaleString()}</p>
-    <ul class="flex-row sm:flex gap-5 justify-between pl-5" aria-label="Prediction results">
-      ${item.predictions.map((pred) => `<li tabindex="0">${pred.career}: ${(pred.probability * 100).toFixed(2)}%</li>`).join("")}
-    </ul>
-    <button class="absolute top-2 right-2 text-red-500 hover:text-red-700 rounded-full p-2 delete-history-item-btn focus:outline-none focus:ring-2 focus:ring-red-400" data-id="${item._id}" aria-label="Delete history for ${item.name} on ${new Date(item.createdAt).toLocaleString()}" title="Delete this history item">
-      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-    </button>
-  `;
+        <!-- Header -->
+        <div class="flex justify-between items-start mb-6">
+          <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center text-white font-bold text-lg">
+              ${index + 1}
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-1" tabindex="0">${item.name}</h3>
+              <div class="flex items-center text-gray-500">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                <span class="text-sm" tabindex="0">${formattedDate}</span>
+              </div>
+            </div>
+          </div>
+          <button class="delete-history-item-btn w-10 h-10 bg-red-50 hover:bg-red-100 text-red-500 hover:text-red-700 rounded-2xl flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-red-300" 
+                  data-id="${item._id}" 
+                  aria-label="Delete history for ${item.name} on ${formattedDate}" 
+                  title="Delete this history item">
+            <i class="fas fa-trash text-sm" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Top Prediction Highlight -->
+        <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-6 mb-6 border border-purple-100">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-semibold text-purple-600 uppercase tracking-wide mb-1">Top Recommendation</p>
+              <h4 class="text-xl font-bold text-gray-800">${topPrediction.career}</h4>
+            </div>
+            <div class="text-right">
+              <div class="inline-flex items-center bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-2 rounded-xl font-bold">
+                <i class="fas fa-star mr-2"></i>
+                ${(topPrediction.probability * 100).toFixed(1)}%
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- All Predictions -->
+        <div class="space-y-3" aria-label="All prediction results">
+          <h5 class="text-lg font-semibold text-gray-700 mb-4 flex items-center">
+            <i class="fas fa-chart-bar mr-2 text-purple-500"></i>
+            All Predictions
+          </h5>
+          <div class="grid gap-3">
+            ${item.predictions.map((pred, predIndex) => {
+              const percentage = (pred.probability * 100).toFixed(1);
+              const isTop = pred === topPrediction;
+              return `
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors" tabindex="0">
+                  <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 ${isTop ? 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white' : 'bg-gray-200 text-gray-600'} rounded-lg flex items-center justify-center text-sm font-bold">
+                      ${predIndex + 1}
+                    </div>
+                    <span class="font-medium text-gray-800">${pred.career}</span>
+                  </div>
+                  <div class="flex items-center space-x-3">
+                    <div class="w-24 bg-gray-200 rounded-full h-2 overflow-hidden">
+                      <div class="h-full ${isTop ? 'bg-gradient-to-r from-purple-500 to-indigo-500' : 'bg-gray-400'} rounded-full transition-all duration-500" 
+                           style="width: ${percentage}%"></div>
+                    </div>
+                    <span class="font-bold text-gray-700 min-w-[60px] text-right">${percentage}%</span>
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `;
 
       historyList.appendChild(wrapper);
     });
 
+  
     historyList.querySelectorAll(".delete-history-item-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
+        e.stopPropagation();
         const id = btn.getAttribute("data-id");
         this.#presenter.deleteHistoryById(id);
       });
       btn.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
+          e.stopPropagation();
           btn.click();
         }
       });
@@ -92,17 +214,42 @@ export default class HistoryPage {
     loadingIndicator.classList.remove("hidden");
     loadingIndicator.classList.add("flex");
   }
+
   hideLoading() {
     const loadingIndicator = document.querySelector("#loading-indicator");
     loadingIndicator.classList.add("hidden");
     loadingIndicator.classList.remove("flex");
   }
+
   showError(message) {
     const historyList = document.querySelector("#history-list");
-    historyList.innerHTML = `<p class="text-red-500">${message}</p>`;
+    historyList.innerHTML = `
+      <div class="text-center py-16">
+        <div class="inline-flex items-center justify-center w-24 h-24 bg-red-100 rounded-full mb-6">
+          <i class="fas fa-exclamation-triangle text-4xl text-red-500"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-red-700 mb-4">Error Loading History</h3>
+        <p class="text-red-500 text-lg max-w-md mx-auto">${message}</p>
+        <button onclick="location.reload()" class="mt-6 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <i class="fas fa-refresh mr-2"></i>
+          Try Again
+        </button>
+      </div>
+    `;
   }
+
   deleteHistory() {
     const historyList = document.querySelector("#history-list");
-    historyList.innerHTML = '<p class="text-gray-500">Recommendation history has been deleted.</p>';
+    historyList.innerHTML = `
+      <div class="text-center py-16">
+        <div class="inline-flex items-center justify-center w-24 h-24 bg-green-100 rounded-full mb-6">
+          <i class="fas fa-check-circle text-4xl text-green-500"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-green-700 mb-4">History Cleared</h3>
+        <p class="text-green-600 text-lg max-w-md mx-auto">
+          Your recommendation history has been successfully deleted.
+        </p>
+      </div>
+    `;
   }
 }

@@ -9,144 +9,191 @@ export default class ProfilePage {
 
   async render() {
     return `
-      <section class="container mx-auto px-4">
-        <div class="p-5 flex flex-col items-center min-h-screen">
-          <div class="w-full max-w-md sm:w-96">
-            <h1 class="mt-24 md:mt-28 lg:mt-32 text-xl sm:text-2xl md:text-3xl font-extrabold mb-6 text-center text-gray-800" tabindex="0">
-              <i class="fas fa-user-circle mr-2"></i>My Profile
-            </h1>
-            
-            <div id="profile-view" class="w-full bg-white shadow-lg rounded-xl overflow-hidden">
-              <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-24 relative">
-                <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
-                  <img id="profile-pic-view" src="" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md" />
+       <section class=" via-white to-indigo-50">
+        <div class="container mx-auto px-4 py-8">
+          <div class="flex flex-col items-center">
+            <!-- Header -->
+            <div class="w-full max-w-md text-center mb-8">
+              <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full mb-6 shadow-lg">
+                <i class="fas fa-user-circle text-3xl text-white"></i>
+              </div>
+              <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2" tabindex="0">
+                My Profile
+              </h1>
+              <p class="text-gray-600">Manage your account settings</p>
+            </div>
+
+            <!-- Main Profile Card -->
+            <div class="w-full max-w-md">
+              <div id="profile-view" class="bg-white/70 backdrop-blur-sm border border-white/20 shadow-xl rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                <!-- Header Section -->
+                <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 p-8 text-center relative">
+                  <div class="absolute inset-0 bg-black/10"></div>
+                  <div class="relative z-10">
+                    <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/30">
+                      <i class="fas fa-user text-4xl text-white"></i>
+                    </div>
+                    <h2 id="profile-name-view" class="text-2xl font-bold text-white mb-2"></h2>
+                    <div id="profile-email-view" class="flex items-center justify-center text-white/90">
+                      <i class="fas fa-envelope mr-2"></i>
+                      <span class="text-sm font-medium"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="p-8">
+                  <div class="grid grid-cols-1 gap-4 mb-6">
+                    <button id="edit-profile-btn" class="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                      <i class="fas fa-edit mr-3 group-hover:scale-110 transition-transform"></i>
+                      <span>Edit Profile</span>
+                    </button>
+                    <button id="change-password-btn" class="group bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold py-4 px-6 rounded-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                      <i class="fas fa-key mr-3 group-hover:scale-110 transition-transform"></i>
+                      <span>Change Password</span>
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div class="pt-16 pb-6 px-6 text-center">
-                <h2 id="profile-name-view" class="text-xl font-bold text-gray-800 mb-1"></h2>
-                <p id="profile-email-view" class="text-gray-600 mb-6 flex items-center justify-center">
-                  <i class="fas fa-envelope mr-2 text-sm"></i>
-                  <span class="text-sm"></span>
-                </p>
+
+              <!-- Delete Account Button -->
+              <button id="delete-account-btn" class="mt-6 w-full group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-4 px-6 rounded-2xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                <i class="fas fa-trash-alt mr-3 group-hover:scale-110 transition-transform"></i>
+                <span>Delete Account</span>
+              </button>
+            </div>
+
+            <!-- Edit Profile Modal -->
+            <div id="edit-profile-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm items-center justify-center z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="edit-profile-title" tabindex="-1">
+              <div class="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 w-full max-w-md mx-4 relative border border-white/20 animate-in slide-in-from-bottom-4 duration-300">
+                <button id="close-edit-profile" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-all duration-200">
+                  <i class="fas fa-times text-lg"></i>
+                </button>
                 
-                <div class="grid grid-cols-2 gap-3 mb-4">
-                  <button id="edit-profile-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg flex items-center justify-center transition-colors">
-                    <i class="fas fa-edit mr-2"></i> Edit
+                <div class="text-center mb-8">
+                  <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mb-4">
+                    <i class="fas fa-user-edit text-2xl text-white"></i>
+                  </div>
+                  <h2 id="edit-profile-title" class="text-2xl font-bold text-gray-800">Edit Profile</h2>
+                  <p class="text-gray-600 mt-2">Update your account information</p>
+                </div>
+
+                <form id="profile-form" class="space-y-6">
+                  <div class="space-y-2">
+                    <label class="block text-gray-700 text-sm font-semibold" for="name">
+                      Username
+                    </label>
+                    <div class="relative">
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        placeholder="Enter your username"
+                        aria-describedby="name-error"
+                        class="w-full py-4 pl-12 pr-4 text-gray-700 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      />
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                        <i class="fas fa-user text-gray-400"></i>
+                      </div>
+                    </div>
+                    <p id="name-error" class="text-red-500 text-sm mt-1" role="alert" aria-live="polite"></p>
+                  </div>
+
+                  <div class="space-y-2">
+                    <label class="block text-gray-700 text-sm font-semibold" for="email">
+                      Email Address
+                    </label>
+                    <div class="relative">
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="Enter your email"
+                        aria-describedby="email-error"
+                        class="w-full py-4 pl-12 pr-4 text-gray-700 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      />
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                        <i class="fas fa-envelope text-gray-400"></i>
+                      </div>
+                    </div>
+                    <p id="email-error" class="text-red-500 text-sm mt-1" role="alert" aria-live="polite"></p>
+                  </div>
+
+                  <button type="submit" id="profile-save-btn" class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center">
+                    <i class="fas fa-save mr-3"></i>
+                    <span>Save Changes</span>
                   </button>
-                  <button id="change-password-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-4 rounded-lg flex items-center justify-center transition-colors">
-                    <i class="fas fa-key mr-2"></i> Password
+                </form>
+              </div>
+            </div>
+
+            <!-- Change Password Modal -->
+            <div id="change-password-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm items-center justify-center z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="change-password-title" tabindex="-1">
+              <div class="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 w-full max-w-md mx-4 relative border border-white/20 animate-in slide-in-from-bottom-4 duration-300">
+                <button id="close-change-password" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-all duration-200">
+                  <i class="fas fa-times text-lg"></i>
+                </button>
+                
+                <div class="text-center mb-8">
+                  <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4">
+                    <i class="fas fa-lock text-2xl text-white"></i>
+                  </div>
+                  <h2 id="change-password-title" class="text-2xl font-bold text-gray-800">Change Password</h2>
+                  <p class="text-gray-600 mt-2">Update your account security</p>
+                </div>
+
+                <form id="password-form-modal" class="space-y-6">
+                  <div class="space-y-2">
+                    <label class="block text-gray-700 text-sm font-semibold" for="oldPassword">
+                      Current Password
+                    </label>
+                    <div class="relative">
+                      <input type="password" id="oldPassword" name="oldPassword" required placeholder="Enter current password"
+                        class="w-full py-4 pl-12 pr-12 text-gray-700 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200" />
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                        <i class="fas fa-key text-gray-400"></i>
+                      </div>
+                      <i class="fas fa-eye-slash absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer hover:text-gray-600 transition-colors toggle-password" data-target="oldPassword"></i>
+                    </div>
+                  </div>
+
+                  <div class="space-y-2">
+                    <label class="block text-gray-700 text-sm font-semibold" for="newPassword">
+                      New Password
+                    </label>
+                    <div class="relative">
+                      <input type="password" id="newPassword" name="newPassword" required placeholder="Enter new password"
+                        class="w-full py-4 pl-12 pr-12 text-gray-700 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200" />
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                        <i class="fas fa-key text-gray-400"></i>
+                      </div>
+                      <i class="fas fa-eye-slash absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer hover:text-gray-600 transition-colors toggle-password" data-target="newPassword"></i>
+                    </div>
+                  </div>
+
+                  <button type="submit" id="password-save-btn" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center">
+                    <i class="fas fa-sync-alt mr-3"></i>
+                    <span>Update Password</span>
                   </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="fixed inset-0 items-center justify-center bg-white/80 backdrop-blur-sm z-50 hidden">
+              <div class="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100">
+                <div class="flex flex-col items-center">
+                  <div class="animate-spin rounded-full h-16 w-16 border-4 border-indigo-200 border-t-indigo-600 mb-4"></div>
+                  <p class="text-gray-600 font-medium">Loading...</p>
                 </div>
               </div>
             </div>
 
-            <button id="delete-account-btn" class="mt-6 bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg w-full flex items-center justify-center transition-colors">
-              <i class="fas fa-trash-alt mr-2"></i> Delete Account
-            </button>
+            <!-- Accessibility -->
+            <div id="aria-live-message" class="sr-only" aria-live="polite" role="status" tabindex="-1"></div>
           </div>
-
-          <div id="edit-profile-modal" class="fixed inset-0 bg-black bg-opacity-40 items-center justify-center z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="edit-profile-title" tabindex="-1">
-            <div class="bg-white rounded-xl shadow-xl p-6 w-full max-w-md mx-4 relative">
-              <button id="close-edit-profile" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-xl">
-                <i class="fas fa-times"></i>
-              </button>
-              <h2 id="edit-profile-title" class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                <i class="fas fa-user-edit mr-2 text-blue-500"></i> Edit Profile
-              </h2>
-              <form id="profile-form">
-                <div class="flex flex-col items-center mb-6">
-                  <img id="profile-pic-preview" src="" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover border-4 border-blue-100 mb-4" />
-                  <label for="profilePic" class="cursor-pointer bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-lg flex items-center transition-colors">
-                    <i class="fas fa-camera mr-2"></i> Change Photo
-                    <input type="file" id="profilePic" accept="image/*" class="hidden" />
-                  </label>
-                </div>
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm md:text-base font-bold mb-2" for="name">
-                    Username
-                  </label>
-                  <div class="relative">
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      placeholder="Username"
-                      aria-describedby="name-error"
-                      class="shadow appearance-none border rounded w-full py-2 pl-11 pr-3 text-sm md:text-base text-gray-700 leading-tight focus:outline-none focus:ring"
-                    />
-                    <span class="absolute inset-y-0 left-0 px-3 flex items-center justify-center text-gray-600 bg-slate-200 rounded-l">
-                      <i class="fa-solid fa-user"></i>
-                    </span>
-                  </div>
-                  <p id="name-error" class="text-red-500 text-sm mt-1" role="alert" aria-live="polite"></p>
-                </div>
-                <div class="mb-6">
-                  <label class="block text-gray-700 text-sm md:text-base font-bold mb-2" for="email">
-                    Email
-                  </label>
-                  <div class="relative">
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      placeholder="Email"
-                      aria-describedby="email-error"
-                      class="shadow appearance-none border rounded w-full py-2 pl-11 pr-3 text-sm md:text-base text-gray-700 leading-tight focus:outline-none focus:ring"
-                    />
-                    <span class="absolute inset-y-0 left-0 px-3 flex items-center justify-center text-gray-600 bg-slate-200 rounded-l">
-                      <i class="fa-solid fa-envelope"></i>
-                    </span>
-                  </div>
-                  <p id="email-error" class="text-red-500 text-sm mt-1" role="alert" aria-live="polite"></p>
-                </div>
-                <button type="submit" id="profile-save-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring w-full flex items-center justify-center">
-                  <i class="fas fa-save mr-2"></i> Save Changes
-                </button>
-              </form>
-            </div>
-          </div>
-
-          <div id="change-password-modal" class="fixed inset-0 bg-black bg-opacity-40 items-center justify-center z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="change-password-title" tabindex="-1">
-            <div class="bg-white rounded-xl shadow-xl p-6 w-full max-w-md mx-4 relative">
-              <button id="close-change-password" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-xl">
-                <i class="fas fa-times"></i>
-              </button>
-              <h2 id="change-password-title" class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                <i class="fas fa-lock mr-2 text-yellow-500"></i> Change Password
-              </h2>
-              <form id="password-form-modal">
-                <div class="mb-4">
-                  <label class="text-gray-700 text-sm font-bold mb-2 flex items-center" for="oldPassword">
-                    <i class="fas fa-key mr-2 text-yellow-500"></i> Current Password
-                  </label>
-                  <div class="relative">
-                    <input type="password" id="oldPassword" name="oldPassword" required 
-                      class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-300 pr-10" />
-                    <i class="fas fa-eye-slash absolute right-3 top-3.5 text-gray-400 cursor-pointer toggle-password" data-target="oldPassword"></i>
-                  </div>
-                </div>
-                <div class="mb-6">
-                  <label class="text-gray-700 text-sm font-bold mb-2 flex items-center" for="newPassword">
-                    <i class="fas fa-key mr-2 text-yellow-500"></i> New Password
-                  </label>
-                  <div class="relative">
-                    <input type="password" id="newPassword" name="newPassword" required 
-                      class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-300 pr-10" />
-                    <i class="fas fa-eye-slash absolute right-3 top-3.5 text-gray-400 cursor-pointer toggle-password" data-target="newPassword"></i>
-                  </div>
-                </div>
-                <button type="submit" id="password-save-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-3 px-4 rounded-lg w-full flex items-center justify-center transition-colors">
-                  <i class="fas fa-sync-alt mr-2"></i> Update Password
-                </button>
-              </form>
-            </div>
-          </div>
-          <div id="loading-indicator" class="fixed inset-0 items-center justify-center bg-gray-100 bg-opacity-75 z-50 hidden">
-            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
-          </div>
-          <div id="aria-live-message" class="sr-only" aria-live="polite" role="status" tabindex="-1"></div>
         </div>
       </section>
     `;
@@ -191,25 +238,6 @@ export default class ProfilePage {
       }
     });
 
-    const profilePicInput = document.getElementById("profilePic");
-    const profilePicPreview = document.getElementById("profile-pic-preview");
-    profilePicInput.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        if (file.size > 2 * 1024 * 1024) {
-          this.showError("Profile picture must be less than 2MB.");
-          profilePicInput.value = "";
-          profilePicPreview.src = this.#profileData?.profilePic || "images/profile/puffin.jpg";
-          return;
-        }
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-          profilePicPreview.src = ev.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
     document.querySelectorAll(".toggle-password").forEach((icon) => {
       icon.addEventListener("click", function () {
         const targetId = this.getAttribute("data-target");
@@ -239,8 +267,7 @@ export default class ProfilePage {
         valid = false;
       }
       if (!valid) return;
-      const profilePic = profilePicInput.files[0] || null;
-      await this.#presenter.saveProfile({ name, email, profilePic });
+      await this.#presenter.saveProfile({ name, email, profilePic: null });
       const modal = document.getElementById("edit-profile-modal");
       if (modal) {
         modal.classList.add("hidden");
@@ -295,24 +322,12 @@ export default class ProfilePage {
   showProfile({ name, email, profilePic }) {
     document.getElementById("profile-name-view").textContent = name || "";
     document.getElementById("profile-email-view").querySelector("span").textContent = email || "";
-    const profilePicView = document.getElementById("profile-pic-view");
-    if (profilePic) {
-      profilePicView.src = profilePic;
-    } else {
-      profilePicView.src = "images/profile/puffin.jpg";
-    }
     this.#profileData = { name, email, profilePic };
   }
 
   showEditProfileModal() {
     document.getElementById("name").value = this.#profileData?.name || "";
     document.getElementById("email").value = this.#profileData?.email || "";
-    const profilePicPreview = document.getElementById("profile-pic-preview");
-    if (this.#profileData?.profilePic) {
-      profilePicPreview.src = this.#profileData.profilePic;
-    } else {
-      profilePicPreview.src = "images/profile/puffin.jpg";
-    }
     setTimeout(() => {
       const nameInput = document.getElementById("name");
       if (nameInput) nameInput.focus();
@@ -341,20 +356,20 @@ export default class ProfilePage {
     const btn = document.getElementById("profile-save-btn");
     if (btn) {
       btn.innerHTML = `
-        <span class="loader inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-        <span class="ml-2 text-white">Saving...</span>
-      Saving...`; 
+        <div class="inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
+        <span>Saving...</span>
+      `; 
       btn.setAttribute("disabled", true);
-      btn.classList.add("cursor-wait");
+      btn.classList.add("cursor-wait", "opacity-75");
     }
   }
 
   hideLoadingSave() {
     const btn = document.getElementById("profile-save-btn");
     if (btn) {
-      btn.innerHTML = `<i class="fas fa-save mr-2"></i> Save Changes`;
+      btn.innerHTML = `<i class="fas fa-save mr-3"></i><span>Save Changes</span>`;
       btn.removeAttribute("disabled");
-      btn.classList.remove("cursor-wait");
+      btn.classList.remove("cursor-wait", "opacity-75");
     }
   }
 
@@ -362,20 +377,20 @@ export default class ProfilePage {
     const btn = document.getElementById("password-save-btn");
     if (btn) {
       btn.innerHTML = `
-        <span class="loader inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-        <span class="ml-2 text-white">Updating...</span>
-        Updating...`;
+        <div class="inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
+        <span>Updating...</span>
+      `;
       btn.setAttribute("disabled", true);
-      btn.classList.add("cursor-wait");
+      btn.classList.add("cursor-wait", "opacity-75");
     }
   }
 
   hideLoadingPassword() {
     const btn = document.getElementById("password-save-btn");
     if (btn) {
-      btn.innerHTML = `<i class="fas fa-sync-alt mr-2"></i> Update Password`;
+      btn.innerHTML = `<i class="fas fa-sync-alt mr-3"></i><span>Update Password</span>`;
       btn.removeAttribute("disabled");
-      btn.classList.remove("cursor-wait");
+      btn.classList.remove("cursor-wait", "opacity-75");
     }
   }
 
@@ -396,11 +411,11 @@ export default class ProfilePage {
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,
-      background: "#22c55e",
+      background: "linear-gradient(135deg, #10b981, #059669)",
       color: "#fff",
       customClass: {
-        popup: "rounded-lg shadow-lg px-4 py-2",
-        title: "text-white",
+        popup: "rounded-2xl shadow-2xl px-6 py-4 border border-white/20",
+        title: "text-white font-semibold",
         icon: "text-white",
       },
     });
@@ -423,11 +438,11 @@ export default class ProfilePage {
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,
-      background: "#ef4444",
+      background: "linear-gradient(135deg, #f87171, #ef4444)",
       color: "#fff",
       customClass: {
-        popup: "rounded-lg shadow-lg px-4 py-2",
-        title: "text-white",
+        popup: "rounded-2xl shadow-2xl px-6 py-4 border border-white/20",
+        title: "text-white font-semibold",
         icon: "text-white",
       },
     });
