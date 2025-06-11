@@ -501,22 +501,33 @@ export default class AddPage {
     });
   }
 
-  showSuccess(message) {
-    Swal.fire({
-      icon: "success",
-      title: "Success!",
-      text: message,
-      confirmButtonColor: "#22c55e",
-      background: "#f0fdf4",
-      color: "#166534",
-      showClass: {
-        popup: "animate__animated animate__fadeInDown animate__faster"
-      },
-      hideClass: {
-        popup: "animate__animated animate__fadeOutUp animate__faster"
-      }
-    });
-  }
+ showSuccess(message, callback = null) {
+  Swal.fire({
+    icon: "success",
+    title: "Success!",
+    text: message,
+    confirmButtonColor: "#22c55e",
+    background: "#f0fdf4",
+    color: "#166534",
+    timer: 3000, 
+    timerProgressBar: true, 
+    showConfirmButton: false, 
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showClass: {
+      popup: "animate__animated animate__fadeInDown animate__faster"
+    },
+    hideClass: {
+      popup: "animate__animated animate__fadeOutUp animate__faster"
+    }
+  }).then((result) => {
+    if (callback && typeof callback === 'function') {
+      setTimeout(() => {
+        callback();
+      }, 100);
+    }
+  });
+}
 
   showLoading() {
     const button = document.getElementById("add-button-form");

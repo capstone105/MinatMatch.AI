@@ -51,7 +51,7 @@ export default class HistoryPage {
           <h2 class="text-2xl font-bold text-gray-800">Recommendation History</h2>
         </div>
        <button id="delete-history-button"
-        class="mt-4 sm:mt-0 group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold px-4 py-2 sm:py-3 sm:px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center text-sm sm:text-base whitespace-nowrap">
+        class="group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold px-4 py-2 sm:py-3 sm:px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center text-sm sm:text-base whitespace-nowrap">
         <i class="fas fa-trash mr-1 sm:mr-2 group-hover:scale-110 transition-transform"></i>
         <span>Delete All</span>
       </button>
