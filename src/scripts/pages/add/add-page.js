@@ -488,12 +488,18 @@ export default class AddPage {
 
   showError(message) {
     Swal.fire({
+      toast: true,
+      position: "top-end",
       icon: "error",
-      title: "Validation Error",
-      text: message,
-      confirmButtonColor: "#ef4444",
-      background: "#fef2f2",
-      color: "#991b1b",
+      title: message,
+      showConfirmButton: false,
+      timer: 3500,
+      timerProgressBar: true,
+      background: "linear-gradient(90deg, #ef4444 0%, #991b1b 100%)",
+      color: "#fff",
+      customClass: {
+        popup: "rounded-xl shadow-lg text-sm font-semibold px-6 py-4"
+      },
       showClass: {
         popup: "animate__animated animate__fadeInDown animate__faster"
       },
@@ -503,33 +509,38 @@ export default class AddPage {
     });
   }
 
- showSuccess(message, callback = null) {
-  Swal.fire({
-    icon: "success",
-    title: "Success!",
-    text: message,
-    confirmButtonColor: "#22c55e",
-    background: "#f0fdf4",
-    color: "#166534",
-    timer: 3000, 
-    timerProgressBar: true, 
-    showConfirmButton: false, 
-    allowOutsideClick: false,
-    allowEscapeKey: false,
-    showClass: {
-      popup: "animate__animated animate__fadeInDown animate__faster"
-    },
-    hideClass: {
-      popup: "animate__animated animate__fadeOutUp animate__faster"
-    }
-  }).then((result) => {
-    if (callback && typeof callback === 'function') {
-      setTimeout(() => {
-        callback();
-      }, 100);
-    }
-  });
-}
+  showSuccess(message, callback = null) {
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "success",
+      title: message,
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      background: "linear-gradient(90deg, #22c55e 0%, #166534 100%)",
+      color: "#fff",
+      customClass: {
+        popup: "rounded-xl shadow-lg text-sm font-semibold px-6 py-4"
+      },
+      showClass: {
+        popup: "animate__animated animate__fadeInDown animate__faster"
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp animate__faster"
+      }
+    }).then(() => {
+      if (callback && typeof callback === 'function') {
+        setTimeout(() => {
+          callback();
+        }, 100);
+      }
+    });
+  }
+
+  errorAdd(message) {
+    this.showError(`Prediction failed: ${message}`);
+  }
 
   showLoading() {
     const button = document.getElementById("add-button-form");
