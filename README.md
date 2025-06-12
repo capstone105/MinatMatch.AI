@@ -2,7 +2,9 @@
 **AI-Powered Career Recommendation Progressive Web App**
 
 [![Project Status](https://img.shields.io/badge/status-complete-brightgreen)](https://minat-match-ai.vercel.app)  
+[![Live Demo](https://img.shields.io/badge/demo-online-blue)](https://minat-match-ai.vercel.app)  
 [![PWA Ready](https://img.shields.io/badge/PWA-optimized-blue)](https://web.dev/progressive-web-apps/)  
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) 
 
 ## 🌟 Overview
 MinatMatch.AI is an artificial intelligence-based Progressive Web App (PWA) developed to help users discover optimal career paths through comprehensive analysis of their interests and background.
